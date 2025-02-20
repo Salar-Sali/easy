@@ -3,7 +3,7 @@ import generatePDF from "react-to-pdf";
 import styled from "styled-components";
 import TodoApp, { Todo } from "~/pages/angibot/angibot-items";
 
-export const DetailsBookingCardDiv = styled.div`
+const DetailsBookingCardDiv = styled.div`
   width: calc(50% - 20px);
   border-radius: 16px;
   height: fit-content;
@@ -18,7 +18,7 @@ export const AngiBotPage = () => {
   const [name, setName] = useState<string>("");
   const [total, setTotal] = useState(0);
 
-  console.log("first");
+  const t = "";
 
   return (
     <div>
