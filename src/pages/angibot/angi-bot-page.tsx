@@ -1,24 +1,12 @@
 import { useRef, useState } from "react";
 import generatePDF from "react-to-pdf";
-import styled from "styled-components";
 import TodoApp, { Todo } from "~/pages/angibot/angibot-items";
-
-const DetailsBookingCardDiv = styled.div`
-  width: calc(50% - 20px);
-  border-radius: 16px;
-  height: fit-content;
-  padding: 24px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-  box-sizing: border-box;
-`;
 
 export const AngiBotPage = () => {
   const targetRef = useRef(null);
   const [items, setItems] = useState<Todo[]>([]);
   const [name, setName] = useState<string>("");
   const [total, setTotal] = useState(0);
-
-  const t = "";
 
   return (
     <div>
