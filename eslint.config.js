@@ -3,7 +3,7 @@ import tseslint from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
 import react from "eslint-plugin-react";
 import prettier from "eslint-plugin-prettier";
-import importPlugin from "eslint-plugin-import"; // Add this line
+import importPlugin from "eslint-plugin-import";
 
 export default [
   js.configs.recommended,
@@ -17,7 +17,7 @@ export default [
       "@typescript-eslint": tseslint,
       react,
       prettier,
-      import: importPlugin, // Add this line
+      import: importPlugin,
     },
     rules: {
       "import/extensions": [
