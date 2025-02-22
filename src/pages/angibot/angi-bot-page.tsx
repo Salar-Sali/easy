@@ -4,6 +4,7 @@ import TodoApp, { Todo } from "~/pages/angibot/angibot-items";
 import OfferPage from "~/pages/angibot/ofer-page";
 import Button from "@mui/material/Button";
 import { styled } from "styled-components";
+import DownloadPDF from "~/pages/angibot/offer-page-react-pdf";
 
 export const AngiBotPage = () => {
   const targetRef = useRef(null);
@@ -18,6 +19,7 @@ export const AngiBotPage = () => {
   };
   return (
     <div>
+      <DownloadPDF />
       <FormContainer>
         <FormField>
           <Label>Geben Sie den Namen des Kunden ein:</Label>
@@ -42,13 +44,17 @@ export const AngiBotPage = () => {
         <TodoApp setTodos={setItems} todos={items} />
       </FormContainer>
 
+      {/* pdf file */}
       <div ref={targetRef} style={{ padding: "16px" }}>
         <OfferPage items={items} name={name} price={total} />
       </div>
 
+      {/* button */}
       <Button
         onClick={() => {
-          generatePDF(targetRef, { filename: "angibot.pdf" });
+          generatePDF(targetRef, {
+            filename: "angibot.pdf",
+          });
           resetInputs();
         }}
         style={{ backgroundColor: "#f17e01", color: "white" }}

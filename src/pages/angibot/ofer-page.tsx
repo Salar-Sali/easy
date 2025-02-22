@@ -90,7 +90,7 @@ export default OfferPage;
 
 const Container = styled.div`
   width: 80%;
-  margin: 100px auto 0;
+  margin: 100px;
   font-family: Arial, sans-serif;
   color: #333;
 `;
