@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   // start company and offer info
   title: {
     fontSize: 20,
-    color: "#35393a",
+    color: "#f17e01",
     marginBottom: 4,
   },
   keyValueSection: {
