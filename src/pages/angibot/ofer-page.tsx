@@ -7,11 +7,7 @@ interface OfferPageProps {
   price?: number;
   name: string;
 }
-const OfferPage: React.FC<OfferPageProps> = ({
-  items,
-  price,
-  name = false,
-}) => {
+const OfferPage: React.FC<OfferPageProps> = ({ items, price, name }) => {
   const today = dayjs().format("YYYY-MM-DD");
 
   return (

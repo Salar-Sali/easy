@@ -1,3 +1,4 @@
+import Button from "@mui/material/Button/Button";
 import {
   PDFDownloadLink,
   Document,
@@ -8,6 +9,8 @@ import {
   Image,
   PDFViewer,
 } from "@react-pdf/renderer";
+import dayjs from "dayjs";
+import { Todo } from "~/pages/angibot/angibot-items";
 import { footerStyles } from "~/pages/angibot/style";
 
 const styles = StyleSheet.create({
@@ -97,13 +100,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export const MyDocument = () => {
-  const items = [
-    { id: 1, text: " Kompletter Pack- und Auspackservice" },
-    { id: 2, text: "Möbelmontage und -demontage" },
-    { id: 3, text: "Spezialgutbeförderung" },
-    { id: 4, text: "Kurz- und Langzeitlagerlösungen" },
-  ];
+export const MyDocument = ({
+  items,
+  price,
+  name,
+}: Omit<OfferPageProps, "resetInputs">) => {
+  const today = dayjs().format("YYYY-MM-DD");
   return (
     <Document>
       <Page size="A4" style={styles.page}>
@@ -141,7 +143,7 @@ export const MyDocument = () => {
             </View>
             <View style={styles.keyValueRow}>
               <Text style={styles.key}>Datum</Text>
-              <Text style={styles.value}>20.2.2025</Text>
+              <Text style={styles.value}>{today}</Text>
             </View>
           </View>
           {/* Company data section - end */}
@@ -151,7 +153,7 @@ export const MyDocument = () => {
             <Text style={styles.title}>Angebotsdaten</Text>
             <View style={styles.keyValueRow}>
               <Text style={styles.key}>Angebotsnummer</Text>
-              <Text style={styles.value}>1441</Text>
+              <Text style={styles.value}>{name}</Text>
             </View>
 
             <View style={styles.keyValueRow}>
@@ -171,7 +173,7 @@ export const MyDocument = () => {
                   color: "white",
                 }}
               >
-                1451 €
+                {price} €
               </Text>
             </View>
           </View>
@@ -195,9 +197,9 @@ export const MyDocument = () => {
 
             <Text style={styles.title}>Hauptleistungen</Text>
             <ol>
-              {items.map((item) => (
+              {items.map((item, index) => (
                 <Text key={item.id} style={{ lineHeight: "1" }}>
-                  {item.id}. {item.text}
+                  {index}. {item.text}
                 </Text>
               ))}
             </ol>
@@ -207,9 +209,9 @@ export const MyDocument = () => {
             {/* inluded services - start */}
             <Text style={styles.title}>Zusätzliche Leistungen</Text>
             <ol>
-              {items.map((item) => (
+              {items.map((item, index) => (
                 <Text key={item.id} style={{ lineHeight: "1" }}>
-                  {item.id}. {item.text}
+                  {index}. {item.text}
                 </Text>
               ))}
             </ol>
@@ -268,22 +270,41 @@ export const MyDocument = () => {
 };
 
 // Main component with download button
-const DownloadPDF = () => {
+interface OfferPageProps {
+  items: Todo[];
+  price?: number;
+  name: string;
+  resetInputs: () => void;
+}
+const OfferPageReactPdf = ({
+  items,
+  price,
+  name,
+  resetInputs,
+}: OfferPageProps) => {
   return (
     <div>
       <h2>Download Component as PDF</h2>
       {/* PDF Preview */}
       <PDFViewer style={{ width: "100%", height: "800px" }}>
-        <MyDocument />
+        <MyDocument items={items} name={name} price={price} />
       </PDFViewer>
 
-      <PDFDownloadLink document={<MyDocument />} fileName="my-document.pdf">
+      <PDFDownloadLink
+        document={<MyDocument items={items} name={name} price={price} />}
+        fileName="angibot.pdf"
+      >
         {({ loading }) => (
-          <button>{loading ? "Generating PDF..." : "Download PDF"}</button>
+          <Button
+            style={{ backgroundColor: "#f17e01", color: "white" }}
+            onClick={() => resetInputs()}
+          >
+            {loading ? "PDF generieren..." : "Herunterladen PDF"}
+          </Button>
         )}
       </PDFDownloadLink>
     </div>
   );
 };
 
-export default DownloadPDF;
+export default OfferPageReactPdf;

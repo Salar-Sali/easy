@@ -1,25 +1,28 @@
-import { useRef, useState } from "react";
-import generatePDF from "react-to-pdf";
-import TodoApp, { Todo } from "~/pages/angibot/angibot-items";
-import OfferPage from "~/pages/angibot/ofer-page";
-import Button from "@mui/material/Button";
+import { Button } from "@mui/material";
+import { useState } from "react";
 import { styled } from "styled-components";
-import DownloadPDF from "~/pages/angibot/offer-page-react-pdf";
+import TodoApp, { Todo } from "~/pages/angibot/angibot-items";
+import OfferPageReactPdf from "~/pages/angibot/offer-page-react-pdf";
 
 export const AngiBotPage = () => {
-  const targetRef = useRef(null);
   const [items, setItems] = useState<Todo[]>([]);
   const [name, setName] = useState<string>("");
-  const [total, setTotal] = useState(0);
+  const [price, setPrice] = useState(0);
 
   const resetInputs = () => {
     setItems([]);
     setName("");
-    setTotal(0);
+    setPrice(0);
   };
+
+  const [isPrint, setIsPrint] = useState(false);
+
+  const printFile = () => {
+    setIsPrint((prev) => !prev);
+  };
+
   return (
     <div>
-      <DownloadPDF />
       <FormContainer>
         <FormField>
           <Label>Geben Sie den Namen des Kunden ein:</Label>
@@ -36,31 +39,29 @@ export const AngiBotPage = () => {
           <Label>Geben Sie den Gesamtbetrag ein:</Label>
           <Input
             style={{ width: "95%" }}
-            value={total}
-            onChange={(e) => setTotal(e.target.value as unknown as number)}
+            value={price}
+            onChange={(e) => setPrice(e.target.value as unknown as number)}
             placeholder="Geben Sie den Gesamtbetrag ein"
           />
         </FormField>
         <TodoApp setTodos={setItems} todos={items} />
       </FormContainer>
 
-      {/* pdf file */}
-      <div ref={targetRef} style={{ padding: "16px" }}>
-        <OfferPage items={items} name={name} price={total} />
-      </div>
-
-      {/* button */}
       <Button
-        onClick={() => {
-          generatePDF(targetRef, {
-            filename: "angibot.pdf",
-          });
-          resetInputs();
-        }}
+        onClick={printFile}
         style={{ backgroundColor: "#f17e01", color: "white" }}
       >
-        Herunterladen PDF
+        {isPrint ? "Hide File" : "Show File"}
       </Button>
+
+      {isPrint && (
+        <OfferPageReactPdf
+          items={items}
+          name={name}
+          price={price}
+          resetInputs={resetInputs}
+        />
+      )}
     </div>
   );
 };
