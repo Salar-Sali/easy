@@ -105,7 +105,7 @@ export const MyDocument = ({
   price,
   name,
 }: Omit<OfferPageProps, "resetInputs">) => {
-  const today = dayjs().format("YYYY-MM-DD");
+  const today = dayjs().format("DD.MM.YYYY");
   return (
     <Document>
       <Page size="A4" style={styles.page}>
