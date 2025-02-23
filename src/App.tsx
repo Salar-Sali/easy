@@ -1,14 +1,12 @@
-import './App.css'
-import { AngiBotPage } from './pages/angibot/angi-bot-page'
+import "./App.css";
+import { AngiBotPage } from "./pages/angibot/angi-bot-page";
 
 function App() {
-
-
   return (
     <div>
-<AngiBotPage />
+      <AngiBotPage />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
