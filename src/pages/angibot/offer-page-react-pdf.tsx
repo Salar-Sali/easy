@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-between",
     backgroundColor: "#f5f5f5",
+    paddingBottom: 90,
   },
   image: { width: 135, marginLeft: 20 },
 
@@ -110,12 +111,12 @@ export const MyDocument = ({
     <Document>
       <Page size="A4" style={styles.page}>
         {/* header start */}
-        <View>
+        <View fixed>
           <Image style={styles.image} src="/logo.png" />
         </View>
 
         {/* company in rectangle */}
-        <View style={styles.header}>
+        <View style={styles.header} fixed>
           <View style={styles.headerTextContainer}>
             <Text style={styles.headerText}>Fast Transport</Text>
           </View>
@@ -205,7 +206,7 @@ export const MyDocument = ({
             </ol>
             {/* inluded services - end */}
           </View>
-          <View style={styles.keyValueSection}>
+          <View style={styles.keyValueSection} wrap={false}>
             {/* inluded services - start */}
             <Text style={styles.title}>Zusätzliche Leistungen</Text>
             <ol>
@@ -222,7 +223,7 @@ export const MyDocument = ({
         {/* body end */}
 
         {/* Footer */}
-        <View style={styles.footer}>
+        <View style={styles.footer} fixed>
           {/* Four-Column Section */}
           <View style={styles.content}>
             <View style={footerStyles.columnSection}>
