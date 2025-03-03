@@ -1,3 +1,4 @@
+import { Input } from "@mui/material";
 import { useState } from "react";
 import { styled } from "styled-components";
 
@@ -26,7 +27,7 @@ export default function TodoApp({ todos, setTodos }: TodoAppProps) {
 
   return (
     <div>
-      <Header>Wir werden anbieten</Header>
+      <Label>Wir werden anbieten:</Label>
       <InputSection>
         <TodoInput
           value={input}
@@ -50,21 +51,22 @@ export default function TodoApp({ todos, setTodos }: TodoAppProps) {
 }
 
 // Styled-components
-
-const Header = styled.h1`
-  text-align: center;
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 20px;
+const Label = styled.label`
+  font-size: 1rem;
   font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  display: block;
 `;
 
 const InputSection = styled.div`
   display: flex;
+  flex-direction: column;
+  gap: 8px;
   margin-bottom: 20px;
 `;
 
-const TodoInput = styled.input`
+const TodoInput = styled(Input)`
   flex: 1;
   padding: 12px;
   font-size: 1rem;
@@ -72,6 +74,7 @@ const TodoInput = styled.input`
   border-radius: 4px;
   outline: none;
   transition: border-color 0.3s;
+  background-color: white;
 
   &:focus {
     border-color: #4caf50;
@@ -79,7 +82,6 @@ const TodoInput = styled.input`
 `;
 
 const AddButton = styled.button`
-  margin-left: 10px;
   padding: 12px 20px;
   font-size: 1rem;
   background-color: #f17e01;
@@ -87,16 +89,6 @@ const AddButton = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
-
-  &:hover {
-    background-color: #f17e01;
-    transform: scale(1.05);
-  }
-
-  &:active {
-    background-color: #f17e01;
-  }
 `;
 
 const TodoList = styled.ul`

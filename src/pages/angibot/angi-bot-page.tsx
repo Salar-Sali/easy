@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Input } from "@mui/material";
 import { useState } from "react";
 import { styled } from "styled-components";
 import TodoApp, { Todo } from "~/pages/angibot/angibot-items";
@@ -26,24 +26,25 @@ export const AngiBotPage = () => {
       <FormContainer>
         <FormField>
           <Label>Geben Sie den Namen des Kunden ein:</Label>
-          <Input
+          <StyledInput
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Geben Sie den Namen des Kunden ein"
-            style={{ width: "95%" }}
           />
         </FormField>
 
+        {/* price */}
         <FormField>
           <Label>Geben Sie den Gesamtbetrag ein:</Label>
-          <Input
-            style={{ width: "95%" }}
+          <StyledInput
             value={price}
             onChange={(e) => setPrice(e.target.value as unknown as number)}
             placeholder="Geben Sie den Gesamtbetrag ein"
           />
         </FormField>
+
+        {/* main services */}
         <TodoApp setTodos={setItems} todos={items} />
       </FormContainer>
 
@@ -68,13 +69,15 @@ export const AngiBotPage = () => {
 
 // Styled-components
 const FormContainer = styled.div`
-  max-width: 500px;
-  margin: 0 auto;
+  margin: 0 auto 20px;
   padding: 20px;
   background-color: #f4f4f4;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: "Arial", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 `;
 
 const FormField = styled.div`
@@ -89,7 +92,7 @@ const Label = styled.label`
   display: block;
 `;
 
-const Input = styled.input`
+const StyledInput = styled(Input)`
   width: 100%;
   padding: 12px;
   font-size: 1rem;
@@ -97,6 +100,7 @@ const Input = styled.input`
   border-radius: 4px;
   outline: none;
   transition: border-color 0.3s;
+  background-color: white;
 
   &:focus {
     border-color: #f17e01;
