@@ -1,8 +1,10 @@
 import { Button, Input } from "@mui/material";
 import { useState } from "react";
 import { styled } from "styled-components";
+import { mainOperationsEndpoint } from "~/bootstrap/helper/endpoints";
 import TodoApp, { Todo } from "~/pages/angibot/angibot-items";
 import OfferPageReactPdf from "~/pages/angibot/offer-page-react-pdf";
+import axios from "axios";
 
 export const AngiBotPage = () => {
   const [items, setItems] = useState<Todo[]>([]);
@@ -17,8 +19,24 @@ export const AngiBotPage = () => {
 
   const [isPrint, setIsPrint] = useState(false);
 
-  const printFile = () => {
+  const printFile = async () => {
     setIsPrint((prev) => !prev);
+    resetInputs();
+    const dataToSend = {
+      customerName: name,
+      price,
+      mainServices: items.map((item) => item.text),
+    };
+
+    try {
+      const response = await axios.post(
+        `${mainOperationsEndpoint.createOffer}`,
+        dataToSend
+      );
+      console.log("Data successfully sent:", response.data);
+    } catch (error) {
+      console.error("Error sending data:", error);
+    }
   };
 
   return (
