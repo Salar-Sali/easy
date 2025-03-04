@@ -1,6 +1,7 @@
-export const servicesPageEndpoint = {
+export const pagesRoutes = {
   main: "",
-  offers: "/offers",
+  draft: "page1",
+  offers: "/angebotsliste",
 };
 
 export const mainOperationsEndpoint = {
