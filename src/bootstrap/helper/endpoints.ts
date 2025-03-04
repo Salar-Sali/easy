@@ -2,6 +2,7 @@ export const pagesRoutes = {
   main: "",
   draft: "page1",
   offers: "/angebotsliste",
+  login: "/login",
 };
 
 export const mainOperationsEndpoint = {

@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { pagesRoutes } from "~/bootstrap/helper/endpoints";
+import { logout } from "~/pages/login-page/auth-service";
 
 // Styled Components
 const StyledAppBar = styled(AppBar)`
@@ -53,6 +54,12 @@ const MUIHeader: React.FC = () => {
             sx={{ color: "#555", fontWeight: "bold", textTransform: "none" }}
           >
             Angebotsliste
+          </Button>
+          <Button
+            onClick={logout}
+            sx={{ color: "#555", fontWeight: "bold", textTransform: "none" }}
+          >
+            log out
           </Button>
         </StyledBox>
       </StyledToolbar>
