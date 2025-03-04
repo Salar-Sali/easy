@@ -43,13 +43,6 @@ const MUIHeader: React.FC = () => {
         <StyledBox>
           <Button
             component={Link}
-            to={`${pagesRoutes.draft}`}
-            sx={{ color: "#555", fontWeight: "bold", textTransform: "none" }}
-          >
-            Page 1
-          </Button>
-          <Button
-            component={Link}
             to={`${pagesRoutes.offers}`}
             sx={{ color: "#555", fontWeight: "bold", textTransform: "none" }}
           >
