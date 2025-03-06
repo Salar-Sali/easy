@@ -12,12 +12,14 @@ import { logout } from "~/pages/login-page/auth-service";
 const StyledAppBar = styled(AppBar)`
   background-color: #f4f4f4;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: red;
 `;
 
 const StyledToolbar = styled(Toolbar)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: white;
 `;
 
 const StyledBox = styled(Box)`
@@ -52,7 +54,7 @@ const MUIHeader: React.FC = () => {
             onClick={logout}
             sx={{ color: "#555", fontWeight: "bold", textTransform: "none" }}
           >
-            log out
+            Abmelden
           </Button>
         </StyledBox>
       </StyledToolbar>

@@ -84,7 +84,7 @@ const ServicesPage: React.FC = () => {
                 <strong>Name</strong>
               </TableCell>
               <TableCell>
-                <strong>Price</strong>
+                <strong>Preis</strong>
               </TableCell>
               <TableCell>
                 <strong>Main Services</strong>
