@@ -200,7 +200,7 @@ export const MyDocument = ({
             <ol>
               {items.map((item, index) => (
                 <Text key={item.id} style={{ lineHeight: "1" }}>
-                  {index}. {item.text}
+                  {index + 1}. {item.text}
                 </Text>
               ))}
             </ol>
@@ -212,7 +212,7 @@ export const MyDocument = ({
             <ol>
               {items.map((item, index) => (
                 <Text key={item.id} style={{ lineHeight: "1" }}>
-                  {index}. {item.text}
+                  {index + 1}. {item.text}
                 </Text>
               ))}
             </ol>

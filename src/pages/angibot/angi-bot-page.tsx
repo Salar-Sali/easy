@@ -21,7 +21,7 @@ export const AngiBotPage = () => {
 
   const printFile = async () => {
     setIsPrint((prev) => !prev);
-    resetInputs();
+
     const dataToSend = {
       customerName: name,
       price,
@@ -64,14 +64,13 @@ export const AngiBotPage = () => {
 
         {/* main services */}
         <TodoApp setTodos={setItems} todos={items} />
+        <Button
+          onClick={printFile}
+          style={{ backgroundColor: "#35393a", color: "white" }}
+        >
+          {isPrint ? "Hide File" : "Show File"}
+        </Button>
       </FormContainer>
-
-      <Button
-        onClick={printFile}
-        style={{ backgroundColor: "#f17e01", color: "white" }}
-      >
-        {isPrint ? "Hide File" : "Show File"}
-      </Button>
 
       {isPrint && (
         <OfferPageReactPdf
