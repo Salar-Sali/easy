@@ -7,6 +7,10 @@ interface OfferPageProps {
   price?: number;
   name: string;
 }
+
+/**
+ * @tood not used, remove it.
+ */
 const OfferPage: React.FC<OfferPageProps> = ({ items, price, name }) => {
   const today = dayjs().format("YYYY-MM-DD");
 

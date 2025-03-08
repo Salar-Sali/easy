@@ -3,8 +3,8 @@ import { useState } from "react";
 import { styled } from "styled-components";
 import { mainOperationsEndpoint } from "~/bootstrap/helper/endpoints";
 import TodoApp, { Todo } from "~/pages/angibot/angibot-items";
-import OfferPageReactPdf from "~/pages/angibot/offer-page-react-pdf";
 import axios from "axios";
+import OrganizedOfferPage from "~/pages/angibot/organized-offer-page";
 
 export const AngiBotPage = () => {
   const [items, setItems] = useState<Todo[]>([]);
@@ -73,7 +73,7 @@ export const AngiBotPage = () => {
       </FormContainer>
 
       {isPrint && (
-        <OfferPageReactPdf
+        <OrganizedOfferPage
           items={items}
           name={name}
           price={price}

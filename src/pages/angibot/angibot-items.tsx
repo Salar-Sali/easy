@@ -1,7 +1,7 @@
 import { Input } from "@mui/material";
 import { useState } from "react";
 import { styled } from "styled-components";
-
+import DeleteIcon from "@mui/icons-material/Delete";
 export type Todo = {
   id: number;
   text: string;
@@ -41,7 +41,7 @@ export default function TodoApp({ todos, setTodos }: TodoAppProps) {
           <TodoItem key={todo.id}>
             <TodoText>{todo.text}</TodoText>
             <DeleteButton onClick={() => removeTodo(todo.id)}>
-              Löschen
+              <DeleteIcon fontSize="small" />
             </DeleteButton>
           </TodoItem>
         ))}

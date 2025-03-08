@@ -1,10 +1,15 @@
 import { StyleSheet } from "@react-pdf/renderer";
+import {
+  logoColorDark,
+  logoColorOrange,
+  mainSecionsMargin,
+} from "~/bootstrap/helper/global-styles";
 
 export const footerStyles = StyleSheet.create({
   columnSection: {
-    borderTop: "1px solid #f17e01",
+    borderTop: `1px solid ${logoColorOrange}`,
     marginTop: 15,
-    marginHorizontal: 20,
+    marginHorizontal: mainSecionsMargin,
     paddingVertical: 10,
   },
 
@@ -15,7 +20,7 @@ export const footerStyles = StyleSheet.create({
   },
   columnHeaderText: {
     flex: 1,
-    color: "#000",
+    color: logoColorDark,
     fontSize: 12,
     textAlign: "left",
   },
@@ -26,5 +31,6 @@ export const footerStyles = StyleSheet.create({
   columnText: {
     flex: 1,
     fontSize: 8,
+    marginRight: 8,
   },
 });
