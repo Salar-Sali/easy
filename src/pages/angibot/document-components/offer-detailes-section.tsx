@@ -41,15 +41,15 @@ const OfferDetailsSection = () => (
     {/* Left Column */}
     <View style={styles.column}>
       <View style={styles.row}>
-        <Text style={styles.label}>Client Name:</Text>
+        <Text style={styles.label}>Kundenname:</Text>
         <Text>Jhon Snow</Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.label}>Client Address:</Text>
+        <Text style={styles.label}>Straßenadresse:</Text>
         <Text>Berlin, 16</Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.label}>Client Street:</Text>
+        <Text style={styles.label}>Ort und Postleitzahl:</Text>
         <Text>26721 Emden</Text>
       </View>
     </View>
@@ -57,16 +57,16 @@ const OfferDetailsSection = () => (
     {/* Right Column */}
     <View style={styles.column}>
       <View style={styles.row}>
-        <Text style={styles.label}>Offer Number:</Text>
+        <Text style={styles.label}>Angebotsnummer:</Text>
         <Text>1145</Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.label}>Offer Date:</Text>
+        <Text style={styles.label}>Angebotsdatum:</Text>
         <Text>20.02.2025</Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.label}>Total Price:</Text>
-        <Text>1100,00 Euro</Text>
+        <Text style={styles.label}>Gesamtpreis:</Text>
+        <Text>1100,00 €</Text>
       </View>
     </View>
   </View>

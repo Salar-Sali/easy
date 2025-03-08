@@ -64,10 +64,10 @@ export const MyDocument = ({
         <AngibotHeaderSection />
         <OfferDetailsSection />
         <OfferIntroductionSection />
-        <ServicesSection services={["one1", "two"]} title="Main services:" />
+        <ServicesSection services={["one1", "two"]} title="Hauptleistungen:" />
         <ServicesSection
           services={["one1", "two"]}
-          title="Additional services:"
+          title="Zusätzliche Leistungen:"
         />
         <ClosingSection />
 

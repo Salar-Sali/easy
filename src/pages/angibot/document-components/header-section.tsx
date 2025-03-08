@@ -49,10 +49,10 @@ const AngibotHeaderSection = () => (
       <View style={styles.companyInfo}>
         <Text style={styles.companyName}>Fast Transport</Text>
         <Text style={styles.companyDetails}>
-          Reliable and Fast Moving Services
+          Zuverlässige und schnelle Umzugsdienste
         </Text>
         <Text style={styles.companyDetails}>
-          +123-456-7890 | info@fasttransport.com
+          Stau 123 Oldenburg 26122 | +49 1577 1435952
         </Text>
       </View>
 
