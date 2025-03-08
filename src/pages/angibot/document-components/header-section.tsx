@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
     color: logoColorDark,
   },
   image: {
-    width: 100,
-    height: 80,
+    width: 120,
+    height: 100,
   },
 });
 

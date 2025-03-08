@@ -17,6 +17,7 @@ import AngibotHeaderSection from "~/pages/angibot/document-components/header-sec
 import OfferIntroductionSection from "~/pages/angibot/document-components/introduction-section";
 import OfferDetailsSection from "~/pages/angibot/document-components/offer-detailes-section";
 import ServicesSection from "~/pages/angibot/document-components/services-section";
+import WatermarkSection from "~/pages/angibot/document-components/watermark-section";
 import { footerStyles } from "~/pages/angibot/style";
 
 Font.register({
@@ -127,6 +128,7 @@ export const MyDocument = ({
           </View>
         </View>
         {/* Footer - end */}
+        <WatermarkSection />
       </Page>
     </Document>
   );
