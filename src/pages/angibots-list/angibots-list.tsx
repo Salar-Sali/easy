@@ -10,6 +10,7 @@ import {
   TableContainer,
   Paper,
   Typography,
+  TextField,
 } from "@mui/material";
 import styled from "styled-components";
 import { mainOperationsEndpoint } from "~/bootstrap/helper/endpoints";
@@ -49,9 +50,20 @@ const ServiceItem = styled.li`
   font-size: 14px;
 `;
 
-const ServicesPage: React.FC = () => {
-  const [services, setServices] = useState<Service[]>([]);
+const SearchInput = styled(TextField)`
+  margin-bottom: 16px !important;
+  width: 100%;
+`;
 
+/* -------------------------------------------------------------------------- */
+/*                                  component                                 */
+/* -------------------------------------------------------------------------- */
+const ServicesPage: React.FC = () => {
+  /* --------------------------------- states --------------------------------- */
+  const [services, setServices] = useState<Service[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+
+  /* ---------------------------------- fetch --------------------------------- */
   useEffect(() => {
     axios
       .get(`${mainOperationsEndpoint.createOffer}`)
@@ -61,13 +73,30 @@ const ServicesPage: React.FC = () => {
       .catch((error) => console.error("Error fetching services:", error));
   }, []);
 
+  /* --------------------------------- filter --------------------------------- */
+  const filteredServices = services.filter((service) => {
+    const search = searchTerm.toLowerCase();
+    return (
+      service.id.toString().includes(search) ||
+      service.customerName.toLowerCase().includes(search) ||
+      dayjs(service.created_at).format("DD.MM.YYYY HH:mm").includes(search)
+    );
+  });
+
   return (
     <PageContainer>
       <TableTitle>Angebotsliste</TableTitle>
+      {/* Search Input */}
+      <SearchInput
+        label="Search..."
+        variant="outlined"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      {/* table */}
       <TableContainer
         component={Paper}
         sx={{
-          maxWidth: 800,
           boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
           backgroundColor: "white",
           borderRadius: "8px",
@@ -95,7 +124,7 @@ const ServicesPage: React.FC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {services.map((service, index) => (
+            {filteredServices.map((service, index) => (
               <TableRow key={index}>
                 <TableCell>{service.id}</TableCell>
                 <TableCell>{service.customerName}</TableCell>
@@ -108,10 +137,20 @@ const ServicesPage: React.FC = () => {
                   </MainServicesList>
                 </TableCell>
                 <TableCell>
-                  {dayjs(service.created_at).format("YYYY-MM-DD HH:mm")}
+                  {dayjs(service.created_at).format("DD.MM.YYYY HH:mm")}
                 </TableCell>
               </TableRow>
             ))}
+            {filteredServices.length === 0 && (
+              <TableRow>
+                <TableCell
+                  colSpan={5}
+                  style={{ textAlign: "center", padding: "16px" }}
+                >
+                  No results found
+                </TableCell>
+              </TableRow>
+            )}
           </TableBody>
         </Table>
       </TableContainer>
