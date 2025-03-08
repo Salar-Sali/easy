@@ -1,13 +1,12 @@
 import Button from "@mui/material/Button/Button";
 import {
-  PDFDownloadLink,
   Document,
+  Image,
   Page,
+  PDFDownloadLink,
+  StyleSheet,
   Text,
   View,
-  StyleSheet,
-  Image,
-  PDFViewer,
 } from "@react-pdf/renderer";
 import dayjs from "dayjs";
 import { Todo } from "~/pages/angibot/angibot-items";
@@ -277,6 +276,7 @@ interface OfferPageProps {
   name: string;
   resetInputs: () => void;
 }
+
 const OfferPageReactPdf = ({
   items,
   price,
@@ -284,27 +284,19 @@ const OfferPageReactPdf = ({
   resetInputs,
 }: OfferPageProps) => {
   return (
-    <div>
-      <h2>Download Component as PDF</h2>
-      {/* PDF Preview */}
-      <PDFViewer style={{ width: "100%", height: "800px" }}>
-        <MyDocument items={items} name={name} price={price} />
-      </PDFViewer>
-
-      <PDFDownloadLink
-        document={<MyDocument items={items} name={name} price={price} />}
-        fileName="angibot.pdf"
-      >
-        {({ loading }) => (
-          <Button
-            style={{ backgroundColor: "#f17e01", color: "white" }}
-            onClick={() => resetInputs()}
-          >
-            {loading ? "PDF generieren..." : "Herunterladen PDF"}
-          </Button>
-        )}
-      </PDFDownloadLink>
-    </div>
+    <PDFDownloadLink
+      document={<MyDocument items={items} name={name} price={price} />}
+      fileName="angibot.pdf"
+    >
+      {({ loading }) => (
+        <Button
+          style={{ backgroundColor: "#f17e01", color: "white" }}
+          onClick={() => resetInputs()}
+        >
+          {loading ? "PDF generieren..." : "Herunterladen PDF"}
+        </Button>
+      )}
+    </PDFDownloadLink>
   );
 };
 
