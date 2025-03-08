@@ -19,9 +19,6 @@ export const getToken = () => localStorage.getItem("access_token");
 
 export const isAuthenticated = () => !!getToken();
 
-/**
- * @todo needs to redirect to loging page
- */
 export const logout = () => {
   localStorage.removeItem("access_token");
 };
