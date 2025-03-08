@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
   page: {
     display: "flex",
     flexDirection: "column",
-    // justifyContent: "space-between",
     backgroundColor: "#f5f5f5",
     paddingBottom: 90,
   },
