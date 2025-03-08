@@ -1,5 +1,7 @@
+import { mainOperationsEndpoint } from "~/bootstrap/helper/endpoints";
+
 export const login = async (email: string, password: string) => {
-  const response = await fetch("http://127.0.0.1:8000/api/login", {
+  const response = await fetch(`${mainOperationsEndpoint.login}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
