@@ -64,9 +64,18 @@ export const MyDocument = ({
         <AngibotHeaderSection />
         <OfferDetailsSection />
         <OfferIntroductionSection />
-        <ServicesSection services={["one1", "two"]} title="Hauptleistungen:" />
         <ServicesSection
-          services={["one1", "two"]}
+          services={[
+            " Effiziente und sichere Umzugsdienste für Privathaushalte",
+            "Professionelle Büro-Umzüge mit minimaler Ausfallzeit",
+          ]}
+          title="Hauptleistungen:"
+        />
+        <ServicesSection
+          services={[
+            "Sorgfältige Möbelmontage und -demontage",
+            "Experten für sicheres Verpacken und Auspacken",
+          ]}
           title="Zusätzliche Leistungen:"
         />
         <ClosingSection />

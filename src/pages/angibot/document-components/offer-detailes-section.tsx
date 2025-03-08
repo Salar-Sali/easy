@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, Font } from "@react-pdf/renderer";
 import {
   logoColorDark,
+  logoColorOrange,
   mainSecionsMargin,
 } from "~/bootstrap/helper/global-styles";
 
@@ -46,7 +47,7 @@ const OfferDetailsSection = () => (
       </View>
       <View style={styles.row}>
         <Text style={styles.label}>Straßenadresse:</Text>
-        <Text>Berlin, 16</Text>
+        <Text>Holzsägerstr. 1</Text>
       </View>
       <View style={styles.row}>
         <Text style={styles.label}>Ort und Postleitzahl:</Text>
@@ -66,7 +67,7 @@ const OfferDetailsSection = () => (
       </View>
       <View style={styles.row}>
         <Text style={styles.label}>Gesamtpreis:</Text>
-        <Text>1100,00 €</Text>
+        <Text style={{ color: `${logoColorOrange}` }}>1100,00 €</Text>
       </View>
     </View>
   </View>
