@@ -4,6 +4,7 @@ import {
   Image,
   Page,
   PDFDownloadLink,
+  PDFViewer,
   StyleSheet,
   Text,
   View,
@@ -284,19 +285,24 @@ const OfferPageReactPdf = ({
   resetInputs,
 }: OfferPageProps) => {
   return (
-    <PDFDownloadLink
-      document={<MyDocument items={items} name={name} price={price} />}
-      fileName="angibot.pdf"
-    >
-      {({ loading }) => (
-        <Button
-          style={{ backgroundColor: "#f17e01", color: "white" }}
-          onClick={() => resetInputs()}
-        >
-          {loading ? "PDF generieren..." : "Herunterladen PDF"}
-        </Button>
-      )}
-    </PDFDownloadLink>
+    <>
+      <PDFViewer style={{ width: "100%", height: "800px" }}>
+        <MyDocument items={items} name={name} price={price} />
+      </PDFViewer>
+      <PDFDownloadLink
+        document={<MyDocument items={items} name={name} price={price} />}
+        fileName="angibot.pdf"
+      >
+        {({ loading }) => (
+          <Button
+            style={{ backgroundColor: "#f17e01", color: "white" }}
+            onClick={() => resetInputs()}
+          >
+            {loading ? "PDF generieren..." : "Herunterladen PDF"}
+          </Button>
+        )}
+      </PDFDownloadLink>
+    </>
   );
 };
 
