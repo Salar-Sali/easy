@@ -32,7 +32,6 @@ const PageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #f9f9f9;
-  min-height: 100vh;
 `;
 
 const TableTitle = styled(Typography)`
@@ -88,7 +87,7 @@ const ServicesPage: React.FC = () => {
       <TableTitle>Angebotsliste</TableTitle>
       {/* Search Input */}
       <SearchInput
-        label="Search..."
+        label="Suche..."
         variant="outlined"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
@@ -100,10 +99,13 @@ const ServicesPage: React.FC = () => {
           boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
           backgroundColor: "white",
           borderRadius: "8px",
-          overflow: "hidden",
+          maxHeight: {
+            xs: 580,
+            md: 650,
+          },
         }}
       >
-        <Table>
+        <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
               <TableCell>
@@ -147,7 +149,7 @@ const ServicesPage: React.FC = () => {
                   colSpan={5}
                   style={{ textAlign: "center", padding: "16px" }}
                 >
-                  No results found
+                  Keine Ergebnisse gefunden
                 </TableCell>
               </TableRow>
             )}
