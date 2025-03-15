@@ -6,6 +6,6 @@ export const mainSecionsMargin = 16;
 
 export const titleFontSize = 14;
 
-export const titlePaddingTop = 18;
+export const titlePaddingTop = 32;
 
 export const textFontSize = 10;

@@ -3,6 +3,7 @@ import {
   logoColorOrange,
   mainSecionsMargin,
   titleFontSize,
+  titlePaddingTop,
 } from "~/bootstrap/helper/global-styles";
 
 Font.register({
@@ -23,6 +24,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: logoColorOrange,
     marginBottom: 4,
+    paddingTop:titlePaddingTop, 
   },
   listItem: {
     fontFamily: "Roboto",

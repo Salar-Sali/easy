@@ -5,6 +5,7 @@ import {
   mainSecionsMargin,
   textFontSize,
   titleFontSize,
+  titlePaddingTop,
 } from "~/bootstrap/helper/global-styles";
 
 Font.register({
@@ -25,6 +26,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: logoColorOrange,
     marginBottom: 4,
+    paddingTop: titlePaddingTop,
   },
   text: {
     fontFamily: "Roboto",
