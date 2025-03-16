@@ -3,14 +3,13 @@ import {
   Document,
   Font,
   Page,
-  PDFDownloadLink,
+  pdf,
   PDFViewer,
   StyleSheet,
   Text,
   View,
 } from "@react-pdf/renderer";
-import dayjs from "dayjs";
-import { logoColorOrange } from "~/bootstrap/helper/global-styles";
+import { memo } from "react";
 import { Todo } from "~/pages/angibot/angibot-items";
 import ClosingSection from "~/pages/angibot/document-components/closing-section";
 import AngibotHeaderSection from "~/pages/angibot/document-components/header-section";
@@ -52,87 +51,73 @@ const styles = StyleSheet.create({
   },
 });
 
-export const MyDocument = ({
-  items,
-  price,
-  name,
-}: Omit<OfferPageProps, "resetInputs">) => {
-  const today = dayjs().format("DD.MM.YYYY");
-  console.log("just print", items, price, name, today);
-  return (
-    <Document>
-      <Page size="A4" style={styles.page}>
-        <AngibotHeaderSection />
-        <OfferDetailsSection />
-        <OfferIntroductionSection />
-        <ServicesSection
-          services={[
-            " Effiziente und sichere Umzugsdienste für Privathaushalte",
-            "Professionelle Büro-Umzüge mit minimaler Ausfallzeit",
-          ]}
-          title="Hauptleistungen:"
-        />
-        <ServicesSection
-          services={[
-            "Sorgfältige Möbelmontage und -demontage",
-            "Experten für sicheres Verpacken und Auspacken",
-          ]}
-          title="Zusätzliche Leistungen:"
-        />
-        <ClosingSection />
+export const MyDocument = memo(
+  ({ items, price, name }: Omit<OfferPageProps, "resetInputs">) => {
+    return (
+      <Document>
+        <Page size="A4" style={styles.page}>
+          <AngibotHeaderSection />
+          <OfferDetailsSection name={name} price={price || 0} />
+          <OfferIntroductionSection />
+          <ServicesSection services={items} title="Hauptleistungen:" />
+          <ServicesSection services={items} title="Zusätzliche Leistungen:" />
+          <ClosingSection />
 
-        {/* Footer */}
-        <View style={styles.footer} fixed>
-          {/* Four-Column Section */}
-          <View style={styles.content}>
-            <View style={footerStyles.columnSection}>
-              {/* Headers */}
-              <View style={footerStyles.columnHeader}>
-                <Text style={footerStyles.columnHeaderText}>
-                  Fast Transport
-                </Text>
-                <Text style={footerStyles.columnHeaderText}>Kontaktdaten</Text>
-                <Text style={footerStyles.columnHeaderText}>
-                  Bankverbindung
-                </Text>
-                <Text style={footerStyles.columnHeaderText}>Information</Text>
-              </View>
-
-              {/* Data Rows */}
-              {[
-                [
-                  "Inh. Ahmad Alhaj Abdullah",
-                  "Tel.: 0157 71435952",
-                  "IBAN: DE26 1005 0000 0191 3592 46",
-                  "St. Nr.: 69/101/02561",
-                ],
-                [
-                  "Stau 123 26122 Oldenburg",
-                  "E-Mail:Fast_transport@web.de",
-                  "BIC: BELADEBEXXX",
-                  "USt-IdNr.: DE368155037",
-                ],
-              ].map((row, index) => (
-                <View key={index} style={footerStyles.columnRow}>
-                  <Text style={footerStyles.columnText}>{row[0]}</Text>
-                  <Text style={footerStyles.columnText}>{row[1]}</Text>
-                  <Text style={footerStyles.columnText}>{row[2]}</Text>
-                  <Text
-                    style={{ ...footerStyles.columnText, marginLeft: "12" }}
-                  >
-                    {row[3]}
+          {/* Footer */}
+          <View style={styles.footer} fixed>
+            {/* Four-Column Section */}
+            <View style={styles.content}>
+              <View style={footerStyles.columnSection}>
+                {/* Headers */}
+                <View style={footerStyles.columnHeader}>
+                  <Text style={footerStyles.columnHeaderText}>
+                    Fast Transport
                   </Text>
+                  <Text style={footerStyles.columnHeaderText}>
+                    Kontaktdaten
+                  </Text>
+                  <Text style={footerStyles.columnHeaderText}>
+                    Bankverbindung
+                  </Text>
+                  <Text style={footerStyles.columnHeaderText}>Information</Text>
                 </View>
-              ))}
+
+                {/* Data Rows */}
+                {[
+                  [
+                    "Inh. Ahmad Alhaj Abdullah",
+                    "Tel.: 0157 71435952",
+                    "IBAN: DE26 1005 0000 0191 3592 46",
+                    "St. Nr.: 69/101/02561",
+                  ],
+                  [
+                    "Stau 123 26122 Oldenburg",
+                    "E-Mail:Fast_transport@web.de",
+                    "BIC: BELADEBEXXX",
+                    "USt-IdNr.: DE368155037",
+                  ],
+                ].map((row, index) => (
+                  <View key={index} style={footerStyles.columnRow}>
+                    <Text style={footerStyles.columnText}>{row[0]}</Text>
+                    <Text style={footerStyles.columnText}>{row[1]}</Text>
+                    <Text style={footerStyles.columnText}>{row[2]}</Text>
+                    <Text
+                      style={{ ...footerStyles.columnText, marginLeft: "12" }}
+                    >
+                      {row[3]}
+                    </Text>
+                  </View>
+                ))}
+              </View>
             </View>
           </View>
-        </View>
-        {/* Footer - end */}
-        <WatermarkSection />
-      </Page>
-    </Document>
-  );
-};
+          {/* Footer - end */}
+          <WatermarkSection />
+        </Page>
+      </Document>
+    );
+  }
+);
 
 // Main component with download button
 interface OfferPageProps {
@@ -148,24 +133,23 @@ const OrganizedOfferPage = ({
   name,
   resetInputs,
 }: OfferPageProps) => {
+  const handleDownload = async () => {
+    const blob = await pdf(
+      <MyDocument items={items} name={name} price={price} />
+    ).toBlob();
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "angibot.pdf";
+    link.click();
+  };
   return (
     <>
       <PDFViewer style={{ width: "100%", height: "1000px" }}>
         <MyDocument items={items} name={name} price={price} />
       </PDFViewer>
-      <PDFDownloadLink
-        document={<MyDocument items={items} name={name} price={price} />}
-        fileName="angibot.pdf"
-      >
-        {({ loading }) => (
-          <Button
-            style={{ backgroundColor: `${logoColorOrange}`, color: "white" }}
-            onClick={() => resetInputs()}
-          >
-            {loading ? "PDF generieren..." : "Herunterladen PDF"}
-          </Button>
-        )}
-      </PDFDownloadLink>
+      <Button onClick={resetInputs}>Reset</Button>
+      <Button onClick={handleDownload}>Download PDF</Button>
     </>
   );
 };

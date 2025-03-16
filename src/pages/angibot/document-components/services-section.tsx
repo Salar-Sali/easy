@@ -5,6 +5,7 @@ import {
   titleFontSize,
   titlePaddingTop,
 } from "~/bootstrap/helper/global-styles";
+import { Todo } from "~/pages/angibot/angibot-items";
 
 Font.register({
   family: "Roboto",
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  services: string[];
+  services: Todo[];
   title: string;
 };
 
@@ -48,7 +49,7 @@ const ServicesSection: React.FC<Props> = ({ services, title }) => {
       <Text style={styles.title}>{title}</Text>
       {services.map((service, index) => (
         <Text key={index} style={styles.listItem}>
-          {index + 1}. {service}
+          {index + 1}. {service.text}
         </Text>
       ))}
     </View>

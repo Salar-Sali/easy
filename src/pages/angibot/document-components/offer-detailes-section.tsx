@@ -1,4 +1,6 @@
 import { View, Text, StyleSheet, Font } from "@react-pdf/renderer";
+import dayjs from "dayjs";
+import { useMemo } from "react";
 import {
   logoColorDark,
   logoColorOrange,
@@ -37,40 +39,49 @@ const styles = StyleSheet.create({
   },
 });
 
-const OfferDetailsSection = () => (
-  <View style={styles.container}>
-    {/* Left Column */}
-    <View style={styles.column}>
-      <View style={styles.row}>
-        <Text style={styles.label}>Kundenname:</Text>
-        <Text>Jhon Snow</Text>
-      </View>
-      <View style={styles.row}>
-        <Text style={styles.label}>Straßenadresse:</Text>
-        <Text>Holzsägerstr. 1</Text>
-      </View>
-      <View style={styles.row}>
-        <Text style={styles.label}>Ort und Postleitzahl:</Text>
-        <Text>26721 Emden</Text>
-      </View>
-    </View>
+interface Props {
+  name: string;
+  price: number;
+}
 
-    {/* Right Column */}
-    <View style={styles.column}>
-      <View style={styles.row}>
-        <Text style={styles.label}>Angebotsnummer:</Text>
-        <Text>1145</Text>
+const OfferDetailsSection = ({ name, price }: Props) => {
+  const today = useMemo(() => dayjs().format("DD.MM.YYYY"), []);
+
+  return (
+    <View style={styles.container}>
+      {/* Left Column */}
+      <View style={styles.column}>
+        <View style={styles.row}>
+          <Text style={styles.label}>Kundenname:</Text>
+          <Text>{name}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.label}>Straßenadresse:</Text>
+          <Text>Holzsägerstr. 1</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.label}>Ort und Postleitzahl:</Text>
+          <Text>26721 Emden</Text>
+        </View>
       </View>
-      <View style={styles.row}>
-        <Text style={styles.label}>Angebotsdatum:</Text>
-        <Text>20.02.2025</Text>
-      </View>
-      <View style={styles.row}>
-        <Text style={styles.label}>Gesamtpreis:</Text>
-        <Text style={{ color: `${logoColorOrange}` }}>1100,00 €</Text>
+
+      {/* Right Column */}
+      <View style={styles.column}>
+        <View style={styles.row}>
+          <Text style={styles.label}>Angebotsnummer:</Text>
+          <Text>1145</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.label}>Angebotsdatum:</Text>
+          <Text>{today}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.label}>Gesamtpreis:</Text>
+          <Text style={{ color: `${logoColorOrange}` }}>{price} €</Text>
+        </View>
       </View>
     </View>
-  </View>
-);
+  );
+};
 
 export default OfferDetailsSection;
