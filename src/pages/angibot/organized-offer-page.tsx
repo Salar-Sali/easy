@@ -9,13 +9,13 @@ import {
   Text,
   View,
 } from "@react-pdf/renderer";
-import { memo } from "react";
+import { memo, useMemo } from "react";
 import { Todo } from "~/pages/angibot/angibot-items";
-import ClosingSection from "~/pages/angibot/document-components/closing-section";
-import AngibotHeaderSection from "~/pages/angibot/document-components/header-section";
-import OfferIntroductionSection from "~/pages/angibot/document-components/introduction-section";
-import OfferDetailsSection from "~/pages/angibot/document-components/offer-detailes-section";
-import ServicesSection from "~/pages/angibot/document-components/services-section";
+import { MemoizedClosingSection } from "~/pages/angibot/document-components/closing-section";
+import { MemoizedAngibotHeaderSection } from "~/pages/angibot/document-components/header-section";
+import { MemoizedOfferIntroductionSection } from "~/pages/angibot/document-components/introduction-section";
+import { MemoizedOfferDetailsSection } from "~/pages/angibot/document-components/offer-detailes-section";
+import { MemoizedServicesSection } from "~/pages/angibot/document-components/services-section";
 import WatermarkSection from "~/pages/angibot/document-components/watermark-section";
 import { footerStyles } from "~/pages/angibot/style";
 
@@ -56,12 +56,15 @@ export const MyDocument = memo(
     return (
       <Document>
         <Page size="A4" style={styles.page}>
-          <AngibotHeaderSection />
-          <OfferDetailsSection name={name} price={price || 0} />
-          <OfferIntroductionSection />
-          <ServicesSection services={items} title="Hauptleistungen:" />
-          <ServicesSection services={items} title="Zusätzliche Leistungen:" />
-          <ClosingSection />
+          <MemoizedAngibotHeaderSection />
+          <MemoizedOfferDetailsSection name={name} price={price || 0} />
+          <MemoizedOfferIntroductionSection />
+          <MemoizedServicesSection services={items} title="Hauptleistungen:" />
+          <MemoizedServicesSection
+            services={items}
+            title="Zusätzliche Leistungen:"
+          />
+          <MemoizedClosingSection />
 
           {/* Footer */}
           <View style={styles.footer} fixed>
@@ -143,10 +146,15 @@ const OrganizedOfferPage = ({
     link.download = "angibot.pdf";
     link.click();
   };
+  const memoizedDocument = useMemo(
+    () => <MyDocument items={items} name={name} price={price} />,
+    [items, name, price]
+  );
+
   return (
     <>
       <PDFViewer style={{ width: "100%", height: "1000px" }}>
-        <MyDocument items={items} name={name} price={price} />
+        {memoizedDocument}
       </PDFViewer>
       <Button onClick={resetInputs}>Reset</Button>
       <Button onClick={handleDownload}>Download PDF</Button>

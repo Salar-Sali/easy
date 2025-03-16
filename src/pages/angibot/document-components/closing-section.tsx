@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet, Font } from "@react-pdf/renderer";
+import { memo } from "react";
 import {
   logoColorDark,
   mainSecionsMargin,
@@ -37,3 +38,4 @@ const ClosingSection = () => (
 );
 
 export default ClosingSection;
+export const MemoizedClosingSection = memo(ClosingSection);

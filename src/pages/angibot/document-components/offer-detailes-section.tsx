@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Font } from "@react-pdf/renderer";
 import dayjs from "dayjs";
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 import {
   logoColorDark,
   logoColorOrange,
@@ -85,3 +85,4 @@ const OfferDetailsSection = ({ name, price }: Props) => {
 };
 
 export default OfferDetailsSection;
+export const MemoizedOfferDetailsSection = memo(OfferDetailsSection);

@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet, Font } from "@react-pdf/renderer";
+import { memo } from "react";
 import {
   logoColorDark,
   logoColorOrange,
@@ -48,3 +49,4 @@ const OfferIntroductionSection = () => (
 );
 
 export default OfferIntroductionSection;
+export const MemoizedOfferIntroductionSection = memo(OfferIntroductionSection);

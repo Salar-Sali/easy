@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet, Font } from "@react-pdf/renderer";
+import { memo } from "react";
 import {
   logoColorOrange,
   mainSecionsMargin,
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: logoColorOrange,
     marginBottom: 4,
-    paddingTop:titlePaddingTop, 
+    paddingTop: titlePaddingTop,
   },
   listItem: {
     fontFamily: "Roboto",
@@ -57,3 +58,4 @@ const ServicesSection: React.FC<Props> = ({ services, title }) => {
 };
 
 export default ServicesSection;
+export const MemoizedServicesSection = memo(ServicesSection);

@@ -1,4 +1,5 @@
 import { View, Text, Image, StyleSheet, Font } from "@react-pdf/renderer";
+import { memo } from "react";
 import {
   logoColorDark,
   logoColorOrange,
@@ -64,3 +65,4 @@ const AngibotHeaderSection = () => (
 );
 
 export default AngibotHeaderSection;
+export const MemoizedAngibotHeaderSection = memo(AngibotHeaderSection);
