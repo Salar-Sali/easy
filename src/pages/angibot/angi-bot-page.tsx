@@ -86,9 +86,11 @@ export const AngiBotPage = () => {
   );
 };
 
-// Styled-components
+/* -------------------------------------------------------------------------- */
+/*                                    style                                   */
+/* -------------------------------------------------------------------------- */
 const FormContainer = styled.div`
-  margin: 0 auto 20px;
+  margin: 10px auto;
   padding: 20px;
   background-color: #f4f4f4;
   border-radius: 8px;
