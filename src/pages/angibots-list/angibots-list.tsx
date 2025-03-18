@@ -1,20 +1,21 @@
 // ServicesPage.tsx
-import React, { useEffect, useState } from "react";
-import axios from "axios";
 import {
+  Paper,
   Table,
+  TableBody,
+  TableCell,
+  TableContainer,
   TableHead,
   TableRow,
-  TableCell,
-  TableBody,
-  TableContainer,
-  Paper,
-  Typography,
   TextField,
+  Typography,
 } from "@mui/material";
+import axios from "axios";
+import dayjs from "dayjs";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { mainOperationsEndpoint } from "~/bootstrap/helper/endpoints";
-import dayjs from "dayjs";
+import MainHeader from "~/generic/header/main-header";
 
 // Define the type for the service data
 type Service = {
@@ -84,6 +85,7 @@ const ServicesPage: React.FC = () => {
 
   return (
     <PageContainer>
+      <MainHeader />
       <TableTitle>Angebotsliste</TableTitle>
       {/* Search Input */}
       <SearchInput

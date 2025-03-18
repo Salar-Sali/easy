@@ -13,6 +13,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 const StyledAppBar = styled(AppBar)`
   background-color: #f4f4f4;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  height: 82px;
 `;
 
 const StyledToolbar = styled(Toolbar)`
@@ -32,7 +33,7 @@ const StyledImg = styled("img")`
   height: 70px;
 `;
 
-const MUIHeader: React.FC = () => {
+const MainHeader: React.FC = () => {
   const navigate = useNavigate();
 
   return (
@@ -67,4 +68,4 @@ const MUIHeader: React.FC = () => {
   );
 };
 
-export default MUIHeader;
+export default MainHeader;

@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { login } from "~/pages/login-page/auth-service";
 
 const LoginWrapper = styled(Box)`
-  height: calc(100vh - 80px);
+  height: calc(100vh - 100px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,7 +18,7 @@ const LoginCard = styled(Paper)`
   flex-direction: column;
   align-items: center;
   width: 400px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   background-color: #fff;
 `;

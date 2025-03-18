@@ -1,5 +1,5 @@
 export const pagesRoutes = {
-  main: "",
+  main: "/",
   draft: "page1",
   offers: "/angebotsliste",
   login: "/login",

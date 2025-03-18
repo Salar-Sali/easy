@@ -1,30 +1,28 @@
-import Header from "~/generic/header/main-header";
-import "./App.css";
-import { AngiBotPage } from "./pages/angibot/angi-bot-page";
 import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
   Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
 } from "react-router-dom";
-import AngibotsList from "~/pages/angibots-list/angibots-list";
 import { styled } from "styled-components";
 import { pagesRoutes } from "~/bootstrap/helper/endpoints";
-import PrivateRoute from "~/pages/login-page/private-routes";
+import AngibotsList from "~/pages/angibots-list/angibots-list";
 import LoginPage from "~/pages/login-page/login-page";
+import PrivateRoute from "~/pages/login-page/private-routes";
+import "./App.css";
+import { AngiBotPage } from "./pages/angibot/angi-bot-page";
+
 const MainContent = styled.div`
-  padding-top: 80px;
+  padding-top: 82px;
 `;
+
 function App() {
   return (
     <Router>
-      <Header />
       <MainContent>
         <Routes>
-          {/* Public Route */}
           <Route path={pagesRoutes.login} element={<LoginPage />} />
 
-          {/* Private Routes (only accessible if logged in) */}
           <Route
             path={pagesRoutes.main}
             element={
@@ -42,7 +40,6 @@ function App() {
             }
           />
 
-          {/* Default redirect to main if not matched */}
           <Route path="*" element={<Navigate to={pagesRoutes.main} />} />
         </Routes>
       </MainContent>
