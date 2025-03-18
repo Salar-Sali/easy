@@ -9,7 +9,9 @@ import { pagesRoutes } from "~/bootstrap/helper/endpoints";
 import { logout } from "~/pages/login-page/auth-service";
 import LogoutIcon from "@mui/icons-material/Logout";
 
-// Styled Components
+/* -------------------------------------------------------------------------- */
+/*                                   styles                                   */
+/* -------------------------------------------------------------------------- */
 const StyledAppBar = styled(AppBar)`
   background-color: #f4f4f4;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -33,6 +35,9 @@ const StyledImg = styled("img")`
   height: 70px;
 `;
 
+/* -------------------------------------------------------------------------- */
+/*                                  component                                 */
+/* -------------------------------------------------------------------------- */
 const MainHeader: React.FC = () => {
   const navigate = useNavigate();
 
@@ -58,7 +63,7 @@ const MainHeader: React.FC = () => {
               logout();
               navigate(`${pagesRoutes.login}`);
             }}
-            sx={{ color: "#555", fontWeight: "bold", textTransform: "none" }}
+            sx={{ color: "#f00", fontWeight: "bold", textTransform: "none" }}
           >
             <LogoutIcon />
           </Button>
