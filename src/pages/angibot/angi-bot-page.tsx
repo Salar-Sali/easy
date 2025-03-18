@@ -3,6 +3,11 @@ import axios from "axios";
 import { useState } from "react";
 import { styled } from "styled-components";
 import { mainOperationsEndpoint } from "~/bootstrap/helper/endpoints";
+import {
+  mediumScreenSize,
+  largeScreenSize,
+  extraLargeScreenSize,
+} from "~/bootstrap/helper/global-helper";
 import MainHeader from "~/generic/header/main-header";
 import TodoApp, { Todo } from "~/pages/angibot/angibot-items";
 import OrganizedOfferPage from "~/pages/angibot/organized-offer-page";
@@ -92,6 +97,7 @@ export const AngiBotPage = () => {
 const FormContainer = styled.div`
   margin: 10px auto;
   padding: 20px;
+  box-sizing: border-box;
   background-color: #f4f4f4;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -99,6 +105,16 @@ const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 18px;
+  width: 100%;
+  @media (min-width: ${mediumScreenSize}) {
+    width: 90%;
+  }
+  @media (min-width: ${largeScreenSize}) {
+    width: 75%;
+  }
+  @media (min-width: ${extraLargeScreenSize}) {
+    width: 60%;
+  }
 `;
 
 const FormField = styled.div`

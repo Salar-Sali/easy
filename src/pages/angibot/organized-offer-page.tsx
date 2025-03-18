@@ -10,6 +10,12 @@ import {
   View,
 } from "@react-pdf/renderer";
 import { memo, useMemo } from "react";
+import styled from "styled-components";
+import {
+  mediumScreenSize,
+  largeScreenSize,
+  extraLargeScreenSize,
+} from "~/bootstrap/helper/global-helper";
 import { Todo } from "~/pages/angibot/angibot-items";
 import { MemoizedClosingSection } from "~/pages/angibot/document-components/closing-section";
 import { MemoizedAngibotHeaderSection } from "~/pages/angibot/document-components/header-section";
@@ -153,18 +159,44 @@ const OrganizedOfferPage = ({
   );
 
   return (
-    <>
+    <StyledPdfOptionsWrapper>
       {!isMobile ? (
-        <PDFViewer style={{ width: "100%", height: "1000px" }}>
-          {memoizedDocument}
-        </PDFViewer>
+        <StyledPDFViewer>{memoizedDocument}</StyledPDFViewer>
       ) : (
         <Button onClick={handlePreview}>Open PDF</Button>
       )}
       <Button onClick={resetInputs}>Reset</Button>
       <Button onClick={handlePreview}>Download PDF</Button>
-    </>
+    </StyledPdfOptionsWrapper>
   );
 };
 
 export default OrganizedOfferPage;
+
+/* -------------------------------------------------------------------------- */
+/*                                    style                                   */
+/* -------------------------------------------------------------------------- */
+const StyledPdfOptionsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+`;
+
+const StyledPDFViewer = styled(PDFViewer)`
+  height: 1000px;
+
+  width: 100%;
+
+  @media (min-width: ${mediumScreenSize}) {
+    width: 90%;
+  }
+
+  @media (min-width: ${largeScreenSize}) {
+    width: 75%;
+  }
+
+  @media (min-width: ${extraLargeScreenSize}) {
+    width: 60%;
+  }
+`;
