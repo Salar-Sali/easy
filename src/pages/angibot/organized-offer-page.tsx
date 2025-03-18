@@ -136,16 +136,17 @@ const OrganizedOfferPage = ({
   name,
   resetInputs,
 }: OfferPageProps) => {
-  const handleDownload = async () => {
+  const isMobile = window.innerWidth <= 768;
+
+  const handlePreview = async () => {
     const blob = await pdf(
       <MyDocument items={items} name={name} price={price} />
     ).toBlob();
+
     const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "angibot.pdf";
-    link.click();
+    window.open(url);
   };
+
   const memoizedDocument = useMemo(
     () => <MyDocument items={items} name={name} price={price} />,
     [items, name, price]
@@ -153,11 +154,15 @@ const OrganizedOfferPage = ({
 
   return (
     <>
-      <PDFViewer style={{ width: "100%", height: "1000px" }}>
-        {memoizedDocument}
-      </PDFViewer>
+      {!isMobile ? (
+        <PDFViewer style={{ width: "100%", height: "1000px" }}>
+          {memoizedDocument}
+        </PDFViewer>
+      ) : (
+        <Button onClick={handlePreview}>Open PDF</Button>
+      )}
       <Button onClick={resetInputs}>Reset</Button>
-      <Button onClick={handleDownload}>Download PDF</Button>
+      <Button onClick={handlePreview}>Download PDF</Button>
     </>
   );
 };
