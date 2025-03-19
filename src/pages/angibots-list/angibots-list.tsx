@@ -46,7 +46,6 @@ const SearchInput = styled(TextField)`
   width: 100%;
 `;
 
-// Define the type for the service data
 type Offer = {
   customerName: string;
   price: number;
