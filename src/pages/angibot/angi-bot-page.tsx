@@ -15,7 +15,7 @@ import OrganizedOfferPage from "~/pages/angibot/organized-offer-page";
 export const AngiBotPage = () => {
   const [items, setItems] = useState<Todo[]>([]);
   const [name, setName] = useState<string>("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState<null | number>(null);
 
   const resetInputs = () => {
     setItems([]);
@@ -63,7 +63,7 @@ export const AngiBotPage = () => {
         <FormField>
           <Label>Geben Sie den Gesamtbetrag ein:</Label>
           <StyledInput
-            value={price}
+            value={price ?? ""}
             onChange={(e) => setPrice(e.target.value as unknown as number)}
             placeholder="Geben Sie den Gesamtbetrag ein"
           />
@@ -83,7 +83,7 @@ export const AngiBotPage = () => {
         <OrganizedOfferPage
           items={items}
           name={name}
-          price={price}
+          price={price ?? 0}
           resetInputs={resetInputs}
         />
       )}
