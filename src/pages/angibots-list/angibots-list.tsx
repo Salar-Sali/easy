@@ -17,15 +17,6 @@ import styled from "styled-components";
 import { mainOperationsEndpoint } from "~/bootstrap/helper/endpoints";
 import MainHeader from "~/generic/header/main-header";
 
-// Define the type for the service data
-type Service = {
-  customerName: string;
-  price: number;
-  mainServices: string[];
-  created_at: string;
-  id: string;
-};
-
 // Styled container using styled-components
 const PageContainer = styled.div`
   padding: 20px;
@@ -55,12 +46,21 @@ const SearchInput = styled(TextField)`
   width: 100%;
 `;
 
+// Define the type for the service data
+type Offer = {
+  customerName: string;
+  price: number;
+  mainServices: string[];
+  created_at: string;
+  id: string;
+};
+
 /* -------------------------------------------------------------------------- */
 /*                                  component                                 */
 /* -------------------------------------------------------------------------- */
 const ServicesPage: React.FC = () => {
   /* --------------------------------- states --------------------------------- */
-  const [services, setServices] = useState<Service[]>([]);
+  const [offers, setOffers] = useState<Offer[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   /* ---------------------------------- fetch --------------------------------- */
@@ -68,18 +68,18 @@ const ServicesPage: React.FC = () => {
     axios
       .get(`${mainOperationsEndpoint.createOffer}`)
       .then((response) => {
-        setServices(response.data.offer);
+        setOffers(response.data.offer);
       })
       .catch((error) => console.error("Error fetching services:", error));
   }, []);
 
   /* --------------------------------- filter --------------------------------- */
-  const filteredServices = services.filter((service) => {
+  const filteredOffers = offers.filter((offer) => {
     const search = searchTerm.toLowerCase();
     return (
-      service.id.toString().includes(search) ||
-      service.customerName.toLowerCase().includes(search) ||
-      dayjs(service.created_at).format("DD.MM.YYYY HH:mm").includes(search)
+      offer.id.toString().includes(search) ||
+      offer.customerName.toLowerCase().includes(search) ||
+      dayjs(offer.created_at).format("DD.MM.YYYY HH:mm").includes(search)
     );
   });
 
@@ -128,24 +128,24 @@ const ServicesPage: React.FC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredServices.map((service, index) => (
+            {filteredOffers.map((offer, index) => (
               <TableRow key={index}>
-                <TableCell>{service.id}</TableCell>
-                <TableCell>{service.customerName}</TableCell>
-                <TableCell>€{service.price.toFixed(2)}</TableCell>
+                <TableCell>{offer.id}</TableCell>
+                <TableCell>{offer.customerName}</TableCell>
+                <TableCell>€{offer.price.toFixed(2)}</TableCell>
                 <TableCell>
                   <MainServicesList>
-                    {service.mainServices.map((item, i) => (
+                    {offer.mainServices.map((item, i) => (
                       <ServiceItem key={i}>{item}</ServiceItem>
                     ))}
                   </MainServicesList>
                 </TableCell>
                 <TableCell>
-                  {dayjs(service.created_at).format("DD.MM.YYYY HH:mm")}
+                  {dayjs(offer.created_at).format("DD.MM.YYYY HH:mm")}
                 </TableCell>
               </TableRow>
             ))}
-            {filteredServices.length === 0 && (
+            {filteredOffers.length === 0 && (
               <TableRow>
                 <TableCell
                   colSpan={5}
