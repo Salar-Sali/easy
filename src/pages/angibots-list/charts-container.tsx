@@ -16,10 +16,12 @@ const ChartsContainer = ({ offers }: Props) => {
       <OffersPerDayChart
         chartData={offersCountPerDay}
         yAxisTitle="Number of offers"
+        fillColor="#3F7D58"
       />
       <OffersPerDayChart
         chartData={totalPricePerDay}
         yAxisTitle="Total price"
+        fillColor="#EF9651"
       />
     </StyledChartContainer>
   );

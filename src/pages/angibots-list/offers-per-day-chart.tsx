@@ -17,9 +17,10 @@ interface Props {
     count: number;
   }[];
   yAxisTitle: string;
+  fillColor: string;
 }
 
-const OffersPerDayChart = ({ chartData, yAxisTitle }: Props) => {
+const OffersPerDayChart = ({ chartData, yAxisTitle, fillColor }: Props) => {
   return (
     <ChartContainer>
       <ResponsiveContainer width="100%" height={300}>
@@ -47,7 +48,7 @@ const OffersPerDayChart = ({ chartData, yAxisTitle }: Props) => {
             dataKey="count"
             stroke={logoColorDark}
             strokeWidth={2}
-            fill={`${logoColorDark}30`}
+            fill={fillColor}
           />
         </AreaChart>
       </ResponsiveContainer>
