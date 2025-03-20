@@ -7,6 +7,7 @@ import {
   mediumScreenSize,
   largeScreenSize,
   extraLargeScreenSize,
+  removeLettersFromString,
 } from "~/bootstrap/helper/global-helper";
 import MainHeader from "~/generic/header/main-header";
 import TodoApp, { Todo } from "~/pages/angibot/angibot-items";
@@ -15,12 +16,12 @@ import OrganizedOfferPage from "~/pages/angibot/organized-offer-page";
 export const AngiBotPage = () => {
   const [items, setItems] = useState<Todo[]>([]);
   const [name, setName] = useState<string>("");
-  const [price, setPrice] = useState<null | number>(null);
+  const [price, setPrice] = useState<string>("");
 
   const resetInputs = () => {
     setItems([]);
     setName("");
-    setPrice(0);
+    setPrice("");
   };
 
   const [isPrint, setIsPrint] = useState(false);
@@ -63,8 +64,8 @@ export const AngiBotPage = () => {
         <FormField>
           <Label>Geben Sie den Gesamtbetrag ein:</Label>
           <StyledInput
-            value={price ?? ""}
-            onChange={(e) => setPrice(e.target.value as unknown as number)}
+            value={removeLettersFromString(price as unknown as string) ?? ""}
+            onChange={(e) => setPrice(e.target.value)}
             placeholder="Geben Sie den Gesamtbetrag ein"
           />
         </FormField>
@@ -83,7 +84,7 @@ export const AngiBotPage = () => {
         <OrganizedOfferPage
           items={items}
           name={name}
-          price={price ?? 0}
+          price={Number(price) ?? 0}
           resetInputs={resetInputs}
         />
       )}
