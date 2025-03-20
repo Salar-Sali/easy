@@ -16,8 +16,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { mainOperationsEndpoint } from "~/bootstrap/helper/endpoints";
 import MainHeader from "~/generic/header/main-header";
+import ChartsContainer from "~/pages/angibots-list/charts-container";
 
-// Styled container using styled-components
 const PageContainer = styled.div`
   padding: 20px;
   display: flex;
@@ -46,7 +46,7 @@ const SearchInput = styled(TextField)`
   width: 100%;
 `;
 
-type Offer = {
+export type Offer = {
   customerName: string;
   price: number;
   mainServices: string[];
@@ -86,6 +86,9 @@ const ServicesPage: React.FC = () => {
     <PageContainer>
       <MainHeader />
       <TableTitle>Angebotsliste</TableTitle>
+      {/* charts */}
+      <ChartsContainer offers={offers} />
+
       {/* Search Input */}
       <SearchInput
         label="Suche..."

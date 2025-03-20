@@ -33,6 +33,7 @@
     "react-router": "^6.22.3",
     "react-router-dom": "^6.22.3",
     "react-to-pdf": "^1.0.1",
+    "recharts": "^2.15.1",
     "reflect-metadata": "^0.2.1",
     "styled-components": "^6.1.8",
     "tsyringe": "^4.8.0",
