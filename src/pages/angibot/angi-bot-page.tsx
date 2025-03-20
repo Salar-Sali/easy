@@ -1,4 +1,4 @@
-import { Button, Input } from "@mui/material";
+import { Input } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
 import { styled } from "styled-components";
@@ -9,6 +9,7 @@ import {
   extraLargeScreenSize,
   removeLettersFromString,
 } from "~/bootstrap/helper/global-helper";
+import { StyledMainButton } from "~/bootstrap/helper/global-styles";
 import MainHeader from "~/generic/header/main-header";
 import TodoApp, { Todo } from "~/pages/angibot/angibot-items";
 import OrganizedOfferPage from "~/pages/angibot/organized-offer-page";
@@ -72,12 +73,9 @@ export const AngiBotPage = () => {
 
         {/* main services */}
         <TodoApp setTodos={setItems} todos={items} />
-        <Button
-          onClick={printFile}
-          style={{ backgroundColor: "#35393a", color: "white" }}
-        >
+        <StyledMainButton onClick={printFile}>
           {isPrint ? "Hide File" : "Show File"}
-        </Button>
+        </StyledMainButton>
       </FormContainer>
 
       {isPrint && (

@@ -2,6 +2,7 @@ import { Input } from "@mui/material";
 import { useState } from "react";
 import { styled } from "styled-components";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { StyledMainButton } from "~/bootstrap/helper/global-styles";
 export type Todo = {
   id: number;
   text: string;
@@ -34,7 +35,7 @@ export default function TodoApp({ todos, setTodos }: TodoAppProps) {
           onChange={(e) => setInput(e.target.value)}
           placeholder="Dienst hinzufügen."
         />
-        <AddButton onClick={addTodo}>Hinzufügen</AddButton>
+        <StyledMainButton onClick={addTodo}>Hinzufügen</StyledMainButton>
       </InputSection>
       <TodoList>
         {todos.map((todo) => (
@@ -79,16 +80,6 @@ const TodoInput = styled(Input)`
   &:focus {
     border-color: #4caf50;
   }
-`;
-
-const AddButton = styled.button`
-  padding: 12px 20px;
-  font-size: 1rem;
-  background-color: #f17e01;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
 `;
 
 const TodoList = styled.ul`
