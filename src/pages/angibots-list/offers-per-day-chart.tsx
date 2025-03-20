@@ -1,8 +1,8 @@
 import {
+  Area,
+  AreaChart,
   CartesianGrid,
   Label,
-  Line,
-  LineChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -23,7 +23,7 @@ const OffersPerDayChart = ({ chartData, yAxisTitle }: Props) => {
   return (
     <ChartContainer>
       <ResponsiveContainer width="100%" height={300}>
-        <LineChart
+        <AreaChart
           data={chartData}
           margin={{ top: 20, right: 30, left: 0, bottom: 30 }}
         >
@@ -42,13 +42,14 @@ const OffersPerDayChart = ({ chartData, yAxisTitle }: Props) => {
             />
           </YAxis>
           <Tooltip />
-          <Line
+          <Area
             type="monotone"
             dataKey="count"
             stroke={logoColorDark}
             strokeWidth={2}
+            fill={`${logoColorDark}30`}
           />
-        </LineChart>
+        </AreaChart>
       </ResponsiveContainer>
     </ChartContainer>
   );
