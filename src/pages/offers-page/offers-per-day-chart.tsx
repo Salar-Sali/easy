@@ -9,7 +9,6 @@ import {
   YAxis,
 } from "recharts";
 import { styled } from "styled-components";
-import { logoColorDark } from "~/bootstrap/helper/global-styles";
 
 interface Props {
   chartData: {
@@ -46,7 +45,7 @@ const OffersPerDayChart = ({ chartData, yAxisTitle, fillColor }: Props) => {
           <Area
             type="monotone"
             dataKey="count"
-            stroke={logoColorDark}
+            stroke="#F6F1DE"
             strokeWidth={2}
             fill={fillColor}
           />

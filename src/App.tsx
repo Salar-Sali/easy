@@ -6,11 +6,11 @@ import {
 } from "react-router-dom";
 import { styled } from "styled-components";
 import { pagesRoutes } from "~/bootstrap/helper/endpoints";
-import AngibotsList from "~/pages/angibots-list/angibots-list";
 import LoginPage from "~/pages/login-page/login-page";
 import PrivateRoute from "~/pages/login-page/private-routes";
 import "./App.css";
 import { AngiBotPage } from "./pages/angibot/angi-bot-page";
+import OffersPageContainer from "~/pages/offers-page/offers-page-container";
 
 const MainContent = styled.div`
   padding-top: 82px;
@@ -35,7 +35,7 @@ function App() {
             path={pagesRoutes.offers}
             element={
               <PrivateRoute>
-                <AngibotsList />
+                <OffersPageContainer />
               </PrivateRoute>
             }
           />

@@ -14,6 +14,9 @@ export const titlePaddingTop = 32;
 export const textFontSize = 10;
 
 export const StyledMainButton = styled(Button)`
-  background-color: ${logoColorOrange} !important;
+  background-color: ${logoColorDark} !important;
   color: white !important;
 `;
+
+// margin between sections: 32px for each
+// margin between elements: 8px for each

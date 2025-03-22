@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
-import { Offer } from "~/pages/angibots-list/angibots-list";
-import { getOffersCountPerDay } from "~/pages/angibots-list/get-offers-count-per-day";
-import { getOffersTotalPricePerDay } from "~/pages/angibots-list/get-offers-total-price-per-day";
-import OffersPerDayChart from "~/pages/angibots-list/offers-per-day-chart";
+import { Offer } from "~/pages/offers-page/offers-page-container";
+import { getOffersCountPerDay } from "~/pages/offers-page/get-offers-count-per-day";
+import { getOffersTotalPricePerDay } from "~/pages/offers-page/get-offers-total-price-per-day";
+import OffersPerDayChart from "~/pages/offers-page/offers-per-day-chart";
 
 interface Props {
   offers: Offer[];
@@ -16,12 +16,12 @@ const ChartsContainer = ({ offers }: Props) => {
       <OffersPerDayChart
         chartData={offersCountPerDay}
         yAxisTitle="Number of offers"
-        fillColor="#3F7D58"
+        fillColor="#8AB2A6"
       />
       <OffersPerDayChart
         chartData={totalPricePerDay}
         yAxisTitle="Total price"
-        fillColor="#EF9651"
+        fillColor="#3E3F5B"
       />
     </StyledChartContainer>
   );

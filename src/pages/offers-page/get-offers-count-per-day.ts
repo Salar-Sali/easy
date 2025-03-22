@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { Offer } from "~/pages/angibots-list/angibots-list";
+import { Offer } from "~/pages/offers-page/offers-page-container";
 
 export const getOffersCountPerDay = (offers: Offer[]) => {
   const groupedOffers = offers.reduce<Record<string, number>>((acc, offer) => {
