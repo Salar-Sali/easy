@@ -13,7 +13,6 @@ import { StyledMainButton } from "~/bootstrap/helper/global-styles";
 import MainHeader from "~/generic/header/main-header";
 import TodoApp, { Todo } from "~/pages/angibot/angibot-items";
 import OrganizedOfferPage from "~/pages/angibot/organized-offer-page";
-import { sendEmail } from "~/pages/angibot/send-email";
 
 export const AngiBotPage = () => {
   const [items, setItems] = useState<Todo[]>([]);
