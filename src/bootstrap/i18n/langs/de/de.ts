@@ -10,9 +10,9 @@ const de: typeof langKey = {
     search: "Suchen",
   },
   offerEntryPage: {
-    customerName: "Geben Sie den Namen des Kunden ein:",
+    customerName: "Geben Sie den Namen des Kunden ein",
     totalPrice: "Geben Sie den Gesamtbetrag ein",
-    servicesLabel: "Dieses Angebot beinhaltet: ",
+    servicesLabel: "Dieses Angebot beinhaltet ",
     add: "Hinzufügen",
     addService: "Dienst hinzufügen..  ",
   },
