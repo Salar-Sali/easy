@@ -8,7 +8,9 @@ import {
   TableBody,
 } from "@mui/material";
 import dayjs from "dayjs";
+import { useTranslation } from "react-i18next";
 import { styled } from "styled-components";
+import langKey from "~/bootstrap/i18n/langKey";
 import { Offer } from "~/pages/offers-page/offers-page-container";
 
 const MainServicesList = styled.ul`
@@ -25,6 +27,7 @@ interface Props {
 }
 
 const OffersTable = ({ filteredOffers }: Props) => {
+  const { t } = useTranslation();
   return (
     <TableContainer
       component={Paper}
@@ -42,19 +45,19 @@ const OffersTable = ({ filteredOffers }: Props) => {
         <TableHead>
           <TableRow>
             <TableCell>
-              <strong>Number</strong>
+              <strong>{t(langKey.offerListPage.offerNumber)}</strong>
             </TableCell>
             <TableCell>
-              <strong>Name</strong>
+              <strong>{t(langKey.offerListPage.customerName)}</strong>
             </TableCell>
             <TableCell>
-              <strong>Preis</strong>
+              <strong>{t(langKey.offerListPage.totalPrice)}</strong>
             </TableCell>
             <TableCell>
-              <strong>Main Services</strong>
+              <strong>{t(langKey.offerListPage.mainServices)}</strong>
             </TableCell>
             <TableCell>
-              <strong>Created at</strong>
+              <strong>{t(langKey.offerListPage.createdAt)}</strong>
             </TableCell>
           </TableRow>
         </TableHead>
@@ -82,7 +85,7 @@ const OffersTable = ({ filteredOffers }: Props) => {
                 colSpan={5}
                 style={{ textAlign: "center", padding: "16px" }}
               >
-                Keine Ergebnisse gefunden
+                {t(langKey.global.noResults)}
               </TableCell>
             </TableRow>
           )}

@@ -8,6 +8,7 @@ const de: typeof langKey = {
     showFile: "Datei anzeigen",
     hideFile: "Datei ausblenden",
     search: "Suchen",
+    noResults: "Keine Ergebnisse gefunden",
   },
   offerEntryPage: {
     customerName: "Geben Sie den Namen des Kunden ein",
@@ -19,6 +20,11 @@ const de: typeof langKey = {
   offerListPage: {
     offerList: "Angebotsliste",
     downloadAsExcel: "Als Excel herunterladen",
+    offerNumber: "Angebotsnummer",
+    customerName: "Kundenname",
+    totalPrice: "Gesamtbetrag",
+    mainServices: "Hauptdienste",
+    createdAt: "Erstellt am",
   },
 };
 

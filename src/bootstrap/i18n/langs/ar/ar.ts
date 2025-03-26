@@ -8,6 +8,7 @@ const ar: typeof langKey = {
     showFile: "إظهار الملف",
     hideFile: "إخفاء الملف",
     search: "بحث",
+    noResults: "لا يوجد نتائج",
   },
   offerEntryPage: {
     customerName: "أدخل اسم الزبون ",
@@ -19,6 +20,11 @@ const ar: typeof langKey = {
   offerListPage: {
     offerList: "قائمة العروض",
     downloadAsExcel: "تحميل كإكسل",
+    offerNumber: "رقم العرض",
+    customerName: "اسم الزبون",
+    totalPrice: "المبلغ الإجمالي",
+    mainServices: "الخدمات الرئيسية",
+    createdAt: "تاريخ الإنشاء",
   },
 };
 

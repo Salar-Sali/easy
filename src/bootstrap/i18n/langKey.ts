@@ -6,6 +6,7 @@ const langKey = {
     showFile: "global.showFile",
     hideFile: "global.hideFile",
     search: "global.search",
+    noResults: "global.noResults",
   },
   offerEntryPage: {
     customerName: "offerEntryPage.customerName",
@@ -17,6 +18,11 @@ const langKey = {
   offerListPage: {
     offerList: "offerListPage.offerList",
     downloadAsExcel: "offerListPage.downloadAsExcel",
+    offerNumber: "offerListPage.offerNumber",
+    customerName: "offerListPage.customerName",
+    totalPrice: "offerListPage.totalPrice",
+    mainServices: "offerListPage.mainServices",
+    createdAt: "offerListPage.createdAt",
   },
 };
 
