@@ -1,6 +1,7 @@
 import { Input } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { styled } from "styled-components";
 import { mainOperationsEndpoint } from "~/bootstrap/helper/endpoints";
 import {
@@ -10,6 +11,8 @@ import {
   removeLettersFromString,
 } from "~/bootstrap/helper/global-helper";
 import { StyledMainButton } from "~/bootstrap/helper/global-styles";
+import { LANGS } from "~/bootstrap/i18n/init-i18n";
+import langKey from "~/bootstrap/i18n/langKey";
 import MainHeader from "~/generic/header/main-header";
 import TodoApp, { Todo } from "~/pages/angibot/angibot-items";
 import OrganizedOfferPage from "~/pages/angibot/organized-offer-page";
@@ -47,34 +50,36 @@ export const AngiBotPage = () => {
     }
   };
 
+  const { t,i18n } = useTranslation();
+  const direction = i18n.language === LANGS.AR ? "rtl" : "ltr";
   return (
     <div>
       <MainHeader />
-      <FormContainer>
+      <FormContainer dir={direction}>
         <FormField>
-          <Label>Geben Sie den Namen des Kunden ein:</Label>
+          <Label>{t(langKey.offerEntryPage.customerName)}</Label>
           <StyledInput
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Geben Sie den Namen des Kunden ein"
+            placeholder={t(langKey.offerEntryPage.customerName)}
           />
         </FormField>
 
         {/* price */}
         <FormField>
-          <Label>Geben Sie den Gesamtbetrag ein:</Label>
+          <Label>{t(langKey.offerEntryPage.totalPrice)}</Label>
           <StyledInput
             value={removeLettersFromString(price as unknown as string) ?? ""}
             onChange={(e) => setPrice(e.target.value)}
-            placeholder="Geben Sie den Gesamtbetrag ein"
+            placeholder={t(langKey.offerEntryPage.totalPrice)}
           />
         </FormField>
 
         {/* main services */}
         <TodoApp setTodos={setItems} todos={items} />
         <StyledMainButton onClick={printFile}>
-          {isPrint ? "Hide File" : "Show File"}
+          {isPrint ? t(langKey.global.hideFile) : t(langKey.global.showFile)}
         </StyledMainButton>
       </FormContainer>
 

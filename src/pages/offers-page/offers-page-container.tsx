@@ -10,6 +10,8 @@ import OffersTable from "~/pages/offers-page/angibots-table";
 import ChartsContainer from "~/pages/offers-page/charts-container";
 import { exportToExcel } from "~/pages/offers-page/save-in-excel";
 import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
+import { useTranslation } from "react-i18next";
+import langKey from "~/bootstrap/i18n/langKey";
 const PageContainer = styled.div`
   padding: 20px;
   display: flex;
@@ -65,16 +67,17 @@ const OffersPageContainer: React.FC = () => {
     );
   });
 
+  const { t } = useTranslation();
   return (
     <PageContainer>
       <MainHeader />
-      <TableTitle>Angebotsliste</TableTitle>
+      <TableTitle>{t(langKey.offerListPage.offerList)}</TableTitle>
       {/* charts */}
       <ChartsContainer offers={offers} />
 
       {/* Search Input */}
       <SearchInput
-        label="Suche..."
+          label={t(langKey.global.search)}
         variant="outlined"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
@@ -84,7 +87,7 @@ const OffersPageContainer: React.FC = () => {
           startIcon={<ArrowCircleDownIcon />}
           onClick={() => exportToExcel(offers)}
         >
-          Download
+          {t(langKey.offerListPage.downloadAsExcel)}
         </StyledMainButton>
       </BillsTableActionsContainer>
 

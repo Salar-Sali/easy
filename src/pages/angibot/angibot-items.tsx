@@ -3,6 +3,8 @@ import { useState } from "react";
 import { styled } from "styled-components";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { StyledMainButton } from "~/bootstrap/helper/global-styles";
+import { useTranslation } from "react-i18next";
+import langKey from "~/bootstrap/i18n/langKey";
 export type Todo = {
   id: number;
   text: string;
@@ -26,16 +28,19 @@ export default function TodoApp({ todos, setTodos }: TodoAppProps) {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  const { t } = useTranslation();
   return (
     <div>
-      <Label>Wir werden anbieten:</Label>
+      <Label>{t(langKey.offerEntryPage.servicesLabel)}</Label>
       <InputSection>
         <TodoInput
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Dienst hinzufügen."
+          placeholder={t(langKey.offerEntryPage.addService)}
         />
-        <StyledMainButton onClick={addTodo}>Hinzufügen</StyledMainButton>
+        <StyledMainButton onClick={addTodo}>
+          {t(langKey.offerEntryPage.add)}
+        </StyledMainButton>
       </InputSection>
       <TodoList>
         {todos.map((todo) => (
