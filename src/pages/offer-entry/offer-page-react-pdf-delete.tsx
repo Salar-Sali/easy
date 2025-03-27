@@ -10,8 +10,8 @@ import {
   View,
 } from "@react-pdf/renderer";
 import dayjs from "dayjs";
-import { Todo } from "~/pages/angibot/angibot-items";
-import { footerStyles } from "~/pages/angibot/style";
+import { Todo } from "~/pages/offer-entry/angibot-items";
+import { footerStyles } from "~/pages/offer-entry/style";
 
 const styles = StyleSheet.create({
   page: {

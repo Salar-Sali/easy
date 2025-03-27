@@ -14,10 +14,10 @@ import { StyledMainButton } from "~/bootstrap/helper/global-styles";
 import { LANGS } from "~/bootstrap/i18n/init-i18n";
 import langKey from "~/bootstrap/i18n/langKey";
 import MainHeader from "~/generic/header/main-header";
-import TodoApp, { Todo } from "~/pages/angibot/angibot-items";
-import OrganizedOfferPage from "~/pages/angibot/organized-offer-page";
+import TodoApp, { Todo } from "~/pages/offer-entry/angibot-items";
+import ModernOffer from "~/pages/offer-entry/modern-offer/modern-offer";
 
-export const AngiBotPage = () => {
+export const OfferEntryPage = () => {
   const [items, setItems] = useState<Todo[]>([]);
   const [name, setName] = useState<string>("");
   const [price, setPrice] = useState<string>("");
@@ -50,7 +50,7 @@ export const AngiBotPage = () => {
     }
   };
 
-  const { t,i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const direction = i18n.language === LANGS.AR ? "rtl" : "ltr";
   return (
     <div>
@@ -84,7 +84,7 @@ export const AngiBotPage = () => {
       </FormContainer>
 
       {isPrint && (
-        <OrganizedOfferPage
+        <ModernOffer
           items={items}
           name={name}
           price={Number(price) ?? 0}

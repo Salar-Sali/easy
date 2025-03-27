@@ -6,7 +6,7 @@ import {
   titleFontSize,
   titlePaddingTop,
 } from "~/bootstrap/helper/global-styles";
-import { Todo } from "~/pages/angibot/angibot-items";
+import { Todo } from "~/pages/offer-entry/angibot-items";
 
 Font.register({
   family: "Roboto",

@@ -12,18 +12,18 @@ import {
 import { memo, useMemo } from "react";
 import styled from "styled-components";
 import {
-  mediumScreenSize,
-  largeScreenSize,
   extraLargeScreenSize,
+  largeScreenSize,
+  mediumScreenSize,
 } from "~/bootstrap/helper/global-helper";
-import { Todo } from "~/pages/angibot/angibot-items";
-import { MemoizedClosingSection } from "~/pages/angibot/document-components/closing-section";
-import { MemoizedAngibotHeaderSection } from "~/pages/angibot/document-components/header-section";
-import { MemoizedOfferIntroductionSection } from "~/pages/angibot/document-components/introduction-section";
-import { MemoizedOfferDetailsSection } from "~/pages/angibot/document-components/offer-detailes-section";
-import { MemoizedServicesSection } from "~/pages/angibot/document-components/services-section";
-import WatermarkSection from "~/pages/angibot/document-components/watermark-section";
-import { footerStyles } from "~/pages/angibot/style";
+import { Todo } from "~/pages/offer-entry/angibot-items";
+import { MemoizedClosingSection } from "~/pages/offer-entry/document-components/closing-section";
+import { MemoizedOfferIntroductionSection } from "~/pages/offer-entry/document-components/introduction-section";
+import { MemoizedOfferDetailsSection } from "~/pages/offer-entry/document-components/offer-detailes-section";
+import { MemoizedServicesSection } from "~/pages/offer-entry/document-components/services-section";
+import WatermarkSection from "~/pages/offer-entry/document-components/watermark-section";
+import { footerStyles } from "~/pages/offer-entry/style";
+import { MemoizedModernOfferHeaderSection } from "./components/modern-offer-header-section";
 
 Font.register({
   family: "Roboto",
@@ -62,7 +62,7 @@ export const MyDocument = memo(
     return (
       <Document>
         <Page size="A4" style={styles.page}>
-          <MemoizedAngibotHeaderSection />
+          <MemoizedModernOfferHeaderSection />
           <MemoizedOfferDetailsSection name={name} price={price || 0} />
           <MemoizedOfferIntroductionSection />
           <MemoizedServicesSection services={items} title="Hauptleistungen:" />
@@ -136,12 +136,7 @@ interface OfferPageProps {
   resetInputs: () => void;
 }
 
-const OrganizedOfferPage = ({
-  items,
-  price,
-  name,
-  resetInputs,
-}: OfferPageProps) => {
+const ModernOffer = ({ items, price, name, resetInputs }: OfferPageProps) => {
   const isMobile = window.innerWidth <= 768;
 
   const handlePreview = async () => {
@@ -171,7 +166,7 @@ const OrganizedOfferPage = ({
   );
 };
 
-export default OrganizedOfferPage;
+export default ModernOffer;
 
 /* -------------------------------------------------------------------------- */
 /*                                    style                                   */

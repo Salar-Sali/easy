@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import dayjs from "dayjs";
-import { Todo } from "~/pages/angibot/angibot-items";
+import { Todo } from "~/pages/offer-entry/angibot-items";
 
 interface OfferPageProps {
   items: Todo[];

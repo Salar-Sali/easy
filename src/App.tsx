@@ -8,11 +8,10 @@ import { styled } from "styled-components";
 import { pagesRoutes } from "~/bootstrap/helper/endpoints";
 import LoginPage from "~/pages/login-page/login-page";
 import PrivateRoute from "~/pages/login-page/private-routes";
-import { AngiBotPage } from "./pages/angibot/angi-bot-page";
 import OffersPageContainer from "~/pages/offers-page/offers-page-container";
 import "./index.css";
 import "./App.css";
-
+import { OfferEntryPage } from "~/pages/offer-entry/offer-entry-page";
 const MainContent = styled.div`
   padding-top: 82px;
 `;
@@ -28,7 +27,7 @@ function App() {
             path={pagesRoutes.main}
             element={
               <PrivateRoute>
-                <AngiBotPage />
+                <OfferEntryPage />
               </PrivateRoute>
             }
           />
