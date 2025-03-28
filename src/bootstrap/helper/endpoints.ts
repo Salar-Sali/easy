@@ -4,5 +4,5 @@ export const pagesRoutes = {
 };
 
 export const mainOperationsEndpoint = {
-  login: "http://127.0.0.1:8000/api/register",
+  register: "http://127.0.0.1:8000/api/register",
 };

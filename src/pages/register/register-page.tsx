@@ -1,5 +1,206 @@
-const RegisterPage: React.FC = () => {
-  return <div>register page</div>;
+import { useState } from "react";
+import { TextField, Button, FormControlLabel, Radio, Box, Stack, CircularProgress } from "@mui/material";
+import styled from "styled-components";
+import { mainOperationsEndpoint } from "~/bootstrap/helper/endpoints";
+
+const FormContainer = styled.div`
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+`;
+
+const RegistrationForm = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    username: "",
+    email: "",
+    address: "",
+    country: "",
+    zipCode: "",
+    phoneNumber: "",
+    password: "",
+    confirmPassword: "",
+    agree: false,
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, agree: e.target.checked });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(mainOperationsEndpoint.register, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error( "Registration failed");
+      }
+
+      const data = await response.json();
+      console.log("Registration successful:", data);
+    } catch (err) {
+      setError("An error occurred during registration");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <FormContainer>
+      <form onSubmit={handleSubmit}>
+        <Stack spacing={2}>
+          {/* First Name & Last Name */}
+          <Box display="flex" gap={2}>
+            <TextField
+              label="First Name"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              fullWidth
+              required
+            />
+            <TextField
+              label="Last Name"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              fullWidth
+              
+            />
+          </Box>
+
+          {/* Username */}
+          <TextField
+            label="Username"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            fullWidth
+            required
+          />
+
+          {/* Email */}
+          <TextField
+            label="Email"
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            fullWidth
+            required
+          />
+
+          {/* Address */}
+          <TextField
+            label="Address"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+            fullWidth
+            
+          />
+
+          {/* Country & Zip Code */}
+          <Box display="flex" gap={2}>
+            <TextField
+              label="Country"
+              name="country"
+              value={formData.country}
+              onChange={handleChange}
+              fullWidth
+              
+            />
+            <TextField
+              label="Zip Code"
+              name="zipCode"
+              value={formData.zipCode}
+              onChange={handleChange}
+              fullWidth
+              
+            />
+          </Box>
+
+          {/* Phone Number */}
+          <TextField
+            label="Phone Number"
+            name="phoneNumber"
+            value={formData.phoneNumber}
+            onChange={handleChange}
+            fullWidth
+            
+          />
+
+          {/* Password & Confirm Password */}
+          <Box display="flex" gap={2}>
+            <TextField
+              label="Password"
+              name="password"
+              type="password"
+              value={formData.password}
+              onChange={handleChange}
+              fullWidth
+              required
+            />
+            <TextField
+              label="Confirm Password"
+              name="confirmPassword"
+              type="password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              fullWidth
+              required
+            />
+          </Box>
+
+          {/* Agree on Terms */}
+          <FormControlLabel
+            control={<Radio checked={formData.agree} onChange={handleCheckboxChange} />}
+            label="Agree on terms and conditions"
+          />
+
+
+          {/* Submit Button */}
+          <Button 
+            type="submit" 
+            variant="contained" 
+            color="primary" 
+            fullWidth
+            disabled={isLoading}
+            >
+            {isLoading ? <CircularProgress size={24} /> : "Register"}
+          </Button>
+            {/* Error Message */}
+            {error && (
+              <Box color="error.main" sx={{ mt: 1 }}>
+                {error}
+              </Box>
+            )}
+        </Stack>
+      </form>
+    </FormContainer>
+  );
 };
 
-export default RegisterPage;
+export default RegistrationForm;
