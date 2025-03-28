@@ -27,7 +27,7 @@ const FormContainer = styled.form`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 `;
 
-const RegistrationForm = () => {
+const RegisterPage = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -220,4 +220,4 @@ const RegistrationForm = () => {
   );
 };
 
-export default RegistrationForm;
+export default RegisterPage;
