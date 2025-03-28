@@ -4,26 +4,19 @@ import {
   BrowserRouter as Router,
   Routes,
 } from "react-router-dom";
-import { styled } from "styled-components";
 import { pagesRoutes } from "~/bootstrap/helper/endpoints";
-import LoginPage from "~/pages/login-page/login-page";
 import "./App.css";
 import "./index.css";
-
-const MainContent = styled.div`
-  padding-top: 82px;
-`;
+import RegisterPage from "~/pages/login-page/login-page";
 
 function App() {
   return (
     <Router>
-      <MainContent>
-        <Routes>
-          <Route path={pagesRoutes.register} element={<LoginPage />} />
+      <Routes>
+        <Route path={pagesRoutes.main} element={<RegisterPage />} />
 
-          <Route path="*" element={<Navigate to={pagesRoutes.main} />} />
-        </Routes>
-      </MainContent>
+        <Route path="*" element={<Navigate to={pagesRoutes.main} />} />
+      </Routes>
     </Router>
   );
 }
