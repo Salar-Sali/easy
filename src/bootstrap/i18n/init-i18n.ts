@@ -1,12 +1,10 @@
 import i18next, { InitOptions, Resource } from "i18next";
 import { initReactI18next } from "react-i18next";
 import BrowserLanguageDetector from "i18next-browser-languagedetector";
-import de from "~/bootstrap/i18n/langs/de/de";
 import en from "~/bootstrap/i18n/langs/en/en";
 import ar from "~/bootstrap/i18n/langs/ar/ar";
 
 export enum LANGS {
-  DE = "de",
   AR = "ar",
   EN = "en",
 }
@@ -26,9 +24,7 @@ class I18N {
       [LANGS.EN]: {
         translation: en,
       },
-      [LANGS.DE]: {
-        translation: de,
-      },
+
       [LANGS.AR]: {
         translation: ar,
       },
@@ -39,7 +35,7 @@ class I18N {
   private get getOptions(): InitOptions<unknown> {
     return {
       resources: this.getResources,
-      fallbackLng: LANGS.DE,
+      fallbackLng: LANGS.EN,
       interpolation: {
         escapeValue: false,
       },

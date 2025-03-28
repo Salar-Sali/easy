@@ -1,12 +1,8 @@
 export const pagesRoutes = {
   main: "/",
-  draft: "page1",
-  offers: "/angebotsliste",
-  login: "/login",
+  register: "/register",
 };
 
 export const mainOperationsEndpoint = {
-  login: "http://127.0.0.1:8000/api/login",
-  getOffers: `http://127.0.0.1:8000/api/offer`,
-  createOffer: `http://127.0.0.1:8000/api/offer`,
+  login: "http://127.0.0.1:8000/api/register",
 };
