@@ -1,14 +1,30 @@
 import { useState } from "react";
-import { TextField, Button, FormControlLabel, Radio, Box, Stack, CircularProgress } from "@mui/material";
+import {
+  TextField,
+  Button,
+  FormControlLabel,
+  Radio,
+  Box,
+  Stack,
+  CircularProgress,
+  Typography,
+} from "@mui/material";
 import styled from "styled-components";
 import { mainOperationsEndpoint } from "~/bootstrap/helper/endpoints";
 
-const FormContainer = styled.div`
+const StyledRegisterPage = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 100px);
+`;
+
+const FormContainer = styled.form`
   max-width: 500px;
   margin: 20px auto;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 `;
 
 const RegistrationForm = () => {
@@ -55,7 +71,7 @@ const RegistrationForm = () => {
       });
 
       if (!response.ok) {
-        throw new Error( "Registration failed");
+        throw new Error("Registration failed");
       }
 
       const data = await response.json();
@@ -68,9 +84,10 @@ const RegistrationForm = () => {
   };
 
   return (
-    <FormContainer>
-      <form onSubmit={handleSubmit}>
+    <StyledRegisterPage>
+      <FormContainer onSubmit={handleSubmit}>
         <Stack spacing={2}>
+          <Typography variant="h5">Register Niro</Typography>
           {/* First Name & Last Name */}
           <Box display="flex" gap={2}>
             <TextField
@@ -87,7 +104,6 @@ const RegistrationForm = () => {
               value={formData.lastName}
               onChange={handleChange}
               fullWidth
-              
             />
           </Box>
 
@@ -119,7 +135,6 @@ const RegistrationForm = () => {
             value={formData.address}
             onChange={handleChange}
             fullWidth
-            
           />
 
           {/* Country & Zip Code */}
@@ -130,7 +145,6 @@ const RegistrationForm = () => {
               value={formData.country}
               onChange={handleChange}
               fullWidth
-              
             />
             <TextField
               label="Zip Code"
@@ -138,7 +152,6 @@ const RegistrationForm = () => {
               value={formData.zipCode}
               onChange={handleChange}
               fullWidth
-              
             />
           </Box>
 
@@ -149,7 +162,6 @@ const RegistrationForm = () => {
             value={formData.phoneNumber}
             onChange={handleChange}
             fullWidth
-            
           />
 
           {/* Password & Confirm Password */}
@@ -176,30 +188,35 @@ const RegistrationForm = () => {
 
           {/* Agree on Terms */}
           <FormControlLabel
-            control={<Radio checked={formData.agree} onChange={handleCheckboxChange} />}
+            control={
+              <Radio checked={formData.agree} onChange={handleCheckboxChange} />
+            }
             label="Agree on terms and conditions"
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+            }}
           />
 
-
           {/* Submit Button */}
-          <Button 
-            type="submit" 
-            variant="contained" 
-            color="primary" 
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
             fullWidth
             disabled={isLoading}
-            >
+          >
             {isLoading ? <CircularProgress size={24} /> : "Register"}
           </Button>
-            {/* Error Message */}
-            {error && (
-              <Box color="error.main" sx={{ mt: 1 }}>
-                {error}
-              </Box>
-            )}
+          {/* Error Message */}
+          {error && (
+            <Box color="error.main" sx={{ mt: 1 }}>
+              {error}
+            </Box>
+          )}
         </Stack>
-      </form>
-    </FormContainer>
+      </FormContainer>
+    </StyledRegisterPage>
   );
 };
 
