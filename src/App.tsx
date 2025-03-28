@@ -7,7 +7,7 @@ import {
 import { pagesRoutes } from "~/bootstrap/helper/endpoints";
 import "./App.css";
 import "./index.css";
-import RegisterPage from "~/pages/login-page/login-page";
+import RegisterPage from "~/pages/register/register-page";
 
 function App() {
   return (
